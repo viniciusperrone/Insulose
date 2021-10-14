@@ -7,13 +7,19 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 
-import Background from '../../assets/background-main.jpeg';
-import Logo from '../../assets/icone.png';
+import Background from '../../../assets/background-main.jpeg';
+import Logo from '../../../assets/icone.png';
 
 import { style } from './style';
 
 const Main: React.FC = () => {
+  const navigation = useNavigation();
+
+  function handleSignIn(){
+    navigation.navigate('SignIn');
+  }
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground
@@ -31,7 +37,10 @@ const Main: React.FC = () => {
         </View>
 
         <View>
-          <TouchableOpacity style={style.button}>
+          <TouchableOpacity 
+            style={style.button}
+            onPress={handleSignIn}
+          >
             <Text style={style.text}>login</Text>
           </TouchableOpacity>
 

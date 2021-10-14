@@ -1,7 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Main from '../screens/Main';
+import Main from '../screens/public/Main';
+import SignIn from '../screens/public/SignIn';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -19,6 +20,11 @@ const AuthRoutes: React.FC = () => {
                 name="Main"
                 component={Main}
             />
+            <Screen
+                name="SignIn"
+                component={SignIn}
+            />
+            
         </Navigator>
   )
 }
