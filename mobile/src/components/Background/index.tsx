@@ -7,7 +7,7 @@ type Props = {
   children: ReactNode;
 }
 
-const Background = ({ children }: Props) => {
+const Background: React.FC = ({ children }: Props) => {
   return(
     <LinearGradient
       style={style.container}
