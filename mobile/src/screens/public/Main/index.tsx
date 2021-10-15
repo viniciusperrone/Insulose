@@ -20,6 +20,11 @@ const Main: React.FC = () => {
   function handleSignIn(){
     navigation.navigate('SignIn');
   }
+
+  function handleSignUp(){
+    navigation.navigate('SignUp');
+  }
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground
@@ -44,7 +49,10 @@ const Main: React.FC = () => {
             <Text style={style.text}>login</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={style.button}>
+          <TouchableOpacity 
+            style={style.button} 
+            onPress={handleSignUp}
+          >
             <Text style={style.text}>criar conta</Text>
           </TouchableOpacity>
         </View>

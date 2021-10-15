@@ -16,11 +16,17 @@ import Background from '../../../assets/background-secondary.jpeg';
 
 import { style } from './style';
 import { colors } from '../../../style/colors';
+import { useNavigation } from '@react-navigation/core';
 
 const SignIn: React.FC = () => {
 
   const [security, setSecurity] = useState(true);
 
+  const navigation = useNavigation();
+
+  function handleSignUp(){
+    navigation.navigate('SignUp');
+  }
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground
@@ -59,7 +65,7 @@ const SignIn: React.FC = () => {
             />
             <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
               <Text style={[style.description, { color: colors.white }]}>Ainda não possui uma conta?</Text>
-              <TouchableOpacity style={{ marginLeft: 5 }}>
+              <TouchableOpacity style={{ marginLeft: 5 }} onPress={handleSignUp}>
                 <Text style={[style.description, { color: colors.blue_oil }]}>Criar Conta</Text>
               </TouchableOpacity>
             </View>

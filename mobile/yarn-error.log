@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\Yarn\bin\yarn.js
+  C:\Program Files\nodejs\node.exe C:\Program Files\Yarn\bin\yarn.js add react-native-mask-text
 
 PATH: 
   C:\Users\perro\bin;C:\Program Files\Git\mingw32\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw32\bin;C:\Program Files\Git\usr\bin;C:\Users\perro\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\Yarn\bin;C:\Program Files\GtkSharp\2.12\bin;C:\Users\perro\Downloads\sqlite3;C:\Users\perro\AppData\Local\Programs\Python\Python38-32\Scripts;C:\Users\perro\AppData\Local\Programs\Python\Python38-32;C:\Users\perro\AppData\Local\Microsoft\WindowsApps;C:\Users\perro\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\perro\AppData\Roaming\npm;C:\Users\perro\AppData\Local\Yarn\bin;C:\Program Files\MySQL\MySQL Server 5.7\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -27,9 +27,14 @@ npm manifest:
       "eject": "expo eject"
     },
     "dependencies": {
+      "@expo-google-fonts/poppins": "^0.2.0",
+      "@expo-google-fonts/roboto": "^0.2.0",
+      "@expo-google-fonts/secular-one": "^0.2.0",
       "@react-navigation/native": "^6.0.6",
       "@react-navigation/stack": "^6.0.11",
       "expo": "~42.0.1",
+      "expo-app-loading": "1.1.2",
+      "expo-font": "~9.2.1",
       "expo-linear-gradient": "~9.2.0",
       "expo-status-bar": "~1.0.4",
       "react": "16.13.1",

@@ -9,9 +9,9 @@ type Props = TouchableOpacityProps & {
 
 import { style } from './style';
 
-const Button: React.FC<Props> = ({ title, width, height }) => {
+const Button: React.FC<Props> = ({ title, width, height, ...rest }) => {
   return(
-    <TouchableOpacity style={[style.container, { width: width, height: height }]}>
+    <TouchableOpacity {...rest} style={[style.container, { width: width, height: height }]}>
       <Text style={style.text}>{title}</Text>
     </TouchableOpacity>
   )
