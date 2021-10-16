@@ -7,9 +7,10 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-
 import { TextInputMask } from 'react-native-masked-text';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+
+import { useNavigation } from '@react-navigation/native';
 
 import Modal from '../../../components/Modal';
 import Input from '../../../components/Input';
@@ -95,6 +96,7 @@ const SignUp: React.FC = () => {
   }
 
   const Weight: React.FC = () => {
+
     function handleNext() {
       setModal({
         default: false,
@@ -128,8 +130,20 @@ const SignUp: React.FC = () => {
   };
 
   const Last: React.FC = () => {
+
+    const navigation = useNavigation();
     const [security, setSecurity] = useState(true);
     const [validation, setValidation] = useState(false);
+
+    function handleNext(){
+      setModal({
+        default: false,
+        weight: false,
+        last: false
+      });
+
+      navigation.navigate('SignIn');
+    }
     return (
       <Modal height={440}>
         <Text style={style.title}>Crie sua conta</Text>

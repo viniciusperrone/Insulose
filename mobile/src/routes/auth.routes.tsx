@@ -6,11 +6,14 @@ import Main from '../screens/public/Main';
 import SignIn from '../screens/public/SignIn';
 import SignUp from '../screens/public/SignUp';
 
+// Telas privadas
+import Dashboard from '../screens/private/Dashboard';
+
 const { Navigator, Screen } = createStackNavigator();
 
 const AuthRoutes: React.FC = () => {
-  return(
-    <Navigator
+    return (
+        <Navigator
             headerMode="none"
             screenOptions={{
                 cardStyle: {
@@ -30,9 +33,14 @@ const AuthRoutes: React.FC = () => {
                 name="SignUp"
                 component={SignUp}
             />
-            
+
+            <Screen
+                name="Dashboard"
+                component={Dashboard}
+            />
+
         </Navigator>
-  )
+    )
 }
 
 export default AuthRoutes;

@@ -24,6 +24,9 @@ const SignIn: React.FC = () => {
 
   const navigation = useNavigation();
 
+  function handleSignIn(){
+    navigation.navigate('Dashboard');
+  }
   function handleSignUp(){
     navigation.navigate('SignUp');
   }
@@ -62,6 +65,7 @@ const SignIn: React.FC = () => {
               title="Acessar"
               width={300}
               height={50}
+              onPress={handleSignIn}
             />
             <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
               <Text style={[style.description, { color: colors.white }]}>Ainda não possui uma conta?</Text>
