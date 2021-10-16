@@ -18,6 +18,6 @@ export const style = StyleSheet.create({
     height: '98%',
     fontSize: 16,
     fontFamily: fonts.poppins_700,
-    color: colors.gray,
+    color: colors.blue_oil,
   }
 })

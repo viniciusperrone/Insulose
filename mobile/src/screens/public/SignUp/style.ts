@@ -20,12 +20,26 @@ export const style = StyleSheet.create({
     color: colors.white,
     marginTop: 5
   },
+  description: {
+    fontSize: 14,
+    fontFamily: fonts.poppins_500,
+    alignSelf: 'center'
+  },
   form: {
     flex: 1,
     justifyContent: 'space-evenly'
   },
+  checkBox: {
+    widht: 24,
+    height: 24,
+    borderRadius: 5,
+    alignSelf: 'center',
+    marginRight: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   input: {
-    width: 170,
+    width: 150,
     height: 44,
     borderRadius: 18,
     backgroundColor: colors.white,
@@ -37,7 +51,6 @@ export const style = StyleSheet.create({
   },
   footer: {
     width: '100%',
-    height: '30%',
     justifyContent: 'center',
     alignItems: 'center'
   }
