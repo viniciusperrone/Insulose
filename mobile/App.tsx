@@ -11,6 +11,7 @@ import { Roboto_400Regular } from '@expo-google-fonts/roboto';
 import { SecularOne_400Regular } from '@expo-google-fonts/secular-one';
 import AppLoading from 'expo-app-loading';
 
+import ContextProvider from './src/hooks/';
 import Routes from './src/routes';
 
 const App: React.FC = () => {
@@ -27,13 +28,13 @@ const App: React.FC = () => {
     return <AppLoading />;
   }
   return (
-    <>
+    <ContextProvider>
       <StatusBar
         style="auto"
         translucent
       />
       <Routes />
-    </>
+    </ContextProvider>
   );
 }
 
