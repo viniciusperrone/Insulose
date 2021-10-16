@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
+import { sign } from 'jsonwebtoken';
 
 import database from '../../../../shared/infra/database/connection';
+import authConfig from '../../../../config/token';
 
 class SessionsController {
   async enter(request: Request, response: Response){
@@ -15,7 +17,15 @@ class SessionsController {
       return response.status(400).json({ message: 'Credentials not found!'});
     }
 
-    return response.json(session);
+    const token = sign({}, authConfig.jwt.secret, {
+      subject: String(session.id),
+      expiresIn: authConfig.jwt.expiresIn
+    });
+
+    return response.json({
+      session,
+      token
+    });
   }
 }
 
