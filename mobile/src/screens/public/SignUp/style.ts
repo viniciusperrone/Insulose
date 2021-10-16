@@ -30,7 +30,7 @@ export const style = StyleSheet.create({
     justifyContent: 'space-evenly'
   },
   checkBox: {
-    widht: 24,
+    width: 24,
     height: 24,
     borderRadius: 5,
     alignSelf: 'center',

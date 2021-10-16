@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import {
@@ -13,6 +14,9 @@ import AppLoading from 'expo-app-loading';
 
 import ContextProvider from './src/hooks/';
 import Routes from './src/routes';
+import { LogBox } from 'react-native';
+
+LogBox.ignoreAllLogs();
 
 const App: React.FC = () => {
   const [fontsLoaded] = useFonts({
