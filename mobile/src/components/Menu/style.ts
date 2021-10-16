@@ -5,11 +5,10 @@ import { colors } from '../../style/colors';
 
 export const style = StyleSheet.create({
   container: {
-    width: 100,
-    height: '94%',
+    height: '100%',
     backgroundColor: colors.white,
-    borderTopRightRadius: 50,
-    borderBottomRightRadius: 50,
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
     position: 'absolute',
     left: 0
   },

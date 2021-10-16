@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 
-import { Context } from "./context";
+import { Context } from "./index";
 
-export function useClickDashboard(){
+export function useMenu(){
     const context = useContext(Context);
 
-    const { openDashboard, setOpenDashboard } = context;
+    const { openMenu, setOpenMenu } = context;
 
     return {
-        openDashboard,
-        setOpenDashboard
+        openMenu,
+        setOpenMenu
     };
 }

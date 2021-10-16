@@ -9,12 +9,12 @@ export const Context = createContext({});
 
 export default function ContextProvider({ children } : Props){
 
-    const [openDashboard, setOpenDashboard] = useState(false);
+    const [openMenu, setOpenMenu] = useState(false);
 
     return (
     <Context.Provider value={{
-        openDashboard,
-        setOpenDashboard,
+        openMenu,
+        setOpenMenu,
     }}>
         { children }
     </Context.Provider>

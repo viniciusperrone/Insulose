@@ -6,12 +6,16 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import { useMenu } from '../../../hooks/app';
+
 import Background from '../../../components/Background';
 import Header from '../../../components/Header';
+import Menu from '../../../components/Menu';
 
 import { style } from './style';
 
 const Dashboard: React.FC = () => {
+  const { openMenu } = useMenu();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Background>
@@ -23,14 +27,17 @@ const Dashboard: React.FC = () => {
         </View>
         <View style={style.footer}>
           <TouchableOpacity style={style.button}>
-            <Text style={[style.text, { marginLeft: 10}]}>atividade física</Text>
+            <Text style={[style.text, { marginLeft: 10 }]}>atividade física</Text>
             <View />
           </TouchableOpacity>
           <TouchableOpacity style={style.button}>
-            <Text style={[style.text, { marginLeft: 10}]}>refeições</Text>
+            <Text style={[style.text, { marginLeft: 10 }]}>refeições</Text>
             <View />
           </TouchableOpacity>
         </View>
+        {
+          openMenu && <Menu />
+        }
       </Background>
     </SafeAreaView>
   );
