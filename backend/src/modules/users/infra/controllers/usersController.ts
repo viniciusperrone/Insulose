@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { hash } from 'bcryptjs';
 
 import database from '../../../../shared/infra/database/connection';
 
@@ -15,6 +16,8 @@ class UserController {
       password
     } = request.body;
 
+    const passwordHashed = await hash(password, 8);
+
     const user = {
       first_name: first_name,
       last_name: last_name,
@@ -23,7 +26,7 @@ class UserController {
       weight: weight,
       height: height,
       email: email,
-      password: password
+      password: passwordHashed
     }
 
     const register = await database('users').insert(user);
