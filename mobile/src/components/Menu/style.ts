@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform, StatusBar } from 'react-native';
 
 import { fonts } from '../../style/fonts';
 import { colors } from '../../style/colors';
@@ -6,20 +6,20 @@ import { colors } from '../../style/colors';
 export const style = StyleSheet.create({
   container: {
     height: '100%',
-    backgroundColor: colors.white,
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
+    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     position: 'absolute',
-    left: 0
+    left: 0,
   },
   header: {
-    width: '100',
+    width: '100%',
     height: 80,
     backgroundColor: colors.blue_oil,
     borderTopRightRadius: 20,
   },
   content: {
-    flex: 1
+    flex: 1,
   },
   button: {
     width: '100%',
@@ -46,10 +46,9 @@ export const style = StyleSheet.create({
     width: '100%',
     height: '20%',
     borderBottomRightRadius: 20,
-    position: 'absolute',
-    bottom: 0,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   }
 
 });

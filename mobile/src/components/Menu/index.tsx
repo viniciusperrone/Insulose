@@ -11,71 +11,77 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useMenu } from '../../hooks/app';
 
 import { style } from './style';
+import { colors } from '../../style/colors';
 
 const Menu: React.FC = () => {
   const [width, setWidth] = useState<any>(new Animated.Value(0));
-  const { openMenu, setOpenMenu } = useMenu();
   Animated.timing(
     width,
     {
-      toValue: 250,
-      duration: 600
+      toValue: 285,
+      duration: 600,
+      useNativeDriver: false
     }
-  ).start()
+  ).start();
+
+  const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
   return (
-    <Animated.View style={[style.container, { opacity: openMenu ? 1 : 0, width: width }]}>
-      <LinearGradient
+    <Animated.View style={[style.container, { opacity: 1, width: width }]}>
+      <AnimatedGradient
         colors={['#02005F', '#02007A']}
         style={style.header}
       >
 
-      </LinearGradient>
-      <View style={style.content}>
-        <TouchableOpacity style={style.button}>
-          <Text style={style.text}>Definições</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
-          <Text style={style.text}>Exportar</Text>
-        </TouchableOpacity>
+      </AnimatedGradient>
+      {/* <View style={style.content}> */}
+        <View style={{ flex: 1, backgroundColor: colors.white }}>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.text}>Definições</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.text}>Exportar</Text>
+          </TouchableOpacity>
 
-        <View style={style.line}/>
+          <View style={style.line} />
 
-        <TouchableOpacity style={style.button}>
-          <Text style={style.text}>Glicemia</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
-          <Text style={style.text}>Alarme</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
-          <Text style={style.text}>Remédios</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
-          <Text style={style.text}>Consultas</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.text}>Glicemia</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.text}>Alarme</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.text}>Remédios</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.text}>Consultas</Text>
+          </TouchableOpacity>
 
-        <View style={style.line}/>
+          <View style={style.line} />
 
-        <TouchableOpacity style={style.button}>
-          <Text style={style.text}>Níveis de A1C</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
-          <Text style={style.text}>Contacte-nos</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
-          <Text style={style.text}>Valores de glicose</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
-          <Text style={style.text}>Dicas</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.text}>Níveis de A1C</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.text}>Contacte-nos</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.text}>Valores de glicose</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.text}>Dicas</Text>
+          </TouchableOpacity>
 
-        <LinearGradient 
+        </View>
+
+        <AnimatedGradient
           colors={['#02005F', '#02007A']}
           style={style.footer}
         >
           <Text style={style.description}>Termos e Políticas</Text>
           <Text style={style.description}>de Privacidade</Text>
-        </LinearGradient>
-      </View>
+        </AnimatedGradient>
+      {/* </View> */}
     </Animated.View>
   );
 };

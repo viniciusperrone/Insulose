@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { Animated, Easing } from 'react-native';
+import { Animated, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { style } from './style';
@@ -9,7 +9,7 @@ type Props = {
   children: ReactNode;
 }
 
-const Modal: React.FC<Props> = ({ children, height }) => {
+const Modal = ({ children, height }: Props) => {
 
   const [heightAnimated, setHeightAnimated] = useState<any>(new Animated.Value(0));
 
@@ -18,20 +18,28 @@ const Modal: React.FC<Props> = ({ children, height }) => {
     {
       toValue: height,
       duration: 800,
-      easing: Easing.linear
+      useNativeDriver: false
     }
   ).start();
 
+  const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
+
+  console.log('ESTA RENDERIZANDO AQUI TAMBEM');
   return (
-    <Animated.View style={[style.container, { height: heightAnimated }]}>
-      <LinearGradient
-        colors={['#4448E6', '#562ED9']}
-        style={[style.content, { height: heightAnimated }]}
+    <Animated.View style={[style.container, { opacity: 1, height: heightAnimated }]}>
+      <View
+        style={{
+          backgroundColor: '#4448E6',
+          flex: 1,
+          borderTopLeftRadius: 30,
+          borderTopRightRadius: 30
+        }}
       >
+  
         {children}
-      </LinearGradient>
+      </View>
     </Animated.View>
   );
 };
 
-export default Modal;
+export default React.memo(Modal);

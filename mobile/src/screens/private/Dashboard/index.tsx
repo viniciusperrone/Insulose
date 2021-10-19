@@ -36,10 +36,10 @@ const Dashboard: React.FC = () => {
             <View />
           </TouchableOpacity>
         </View>
-        {
-          openMenu && <Menu />
-        }
       </Background>
+      {
+        openMenu && <Menu />
+      }
     </SafeAreaView>
   );
 };

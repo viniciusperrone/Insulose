@@ -17,4 +17,4 @@ const Input: React.FC<Props> = ({
     {children}
   </View>
 
-export default Input;
+export default React.memo(Input);

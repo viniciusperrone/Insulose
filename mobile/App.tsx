@@ -25,17 +25,19 @@ const App: React.FC = () => {
     SecularOne_400Regular
   });
 
-  if(!fontsLoaded){
+  if (!fontsLoaded) {
     return <AppLoading />;
   }
   return (
-    <ContextProvider>
+    <>
       <StatusBar
         style="auto"
-        translucent
+        backgroundColor="#DEBAE17A"
       />
-      <Routes />
-    </ContextProvider>
+      <ContextProvider>
+        <Routes />
+      </ContextProvider>
+    </>
   );
 }
 

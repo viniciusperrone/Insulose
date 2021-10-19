@@ -12,7 +12,14 @@ type UserData = {
     sex_gender: string;
     weight: number;
     height: number;
+    email: string;
     password: string;
+}
+
+type SignUp = {
+    default: boolean;
+    weight: boolean;
+    last: boolean;
 }
 
 export const Context = createContext({});
@@ -21,13 +28,15 @@ export default function ContextProvider({ children } : Props){
 
     const [openMenu, setOpenMenu] = useState(false);
     const [user, setUser] = useState({} as UserData);
-
+    const [modal, setModal] = useState({} as SignUp);
     return (
     <Context.Provider value={{
         openMenu,
         setOpenMenu,
         user, 
-        setUser
+        setUser,
+        modal, 
+        setModal
     }}>
         { children }
     </Context.Provider>

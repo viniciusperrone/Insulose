@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Main from '../screens/public/Main';
 import SignIn from '../screens/public/SignIn';
 import SignUp from '../screens/public/SignUp';
+import Default from '../screens/public/SignUp/Default';
 
 // Telas privadas
 import Dashboard from '../screens/private/Dashboard';
@@ -18,7 +19,8 @@ const AuthRoutes: React.FC = () => {
             screenOptions={{
                 cardStyle: {
                     backgroundColor: 'transparent'
-                }
+                },
+                headerShown: false
             }}
         >
             <Screen

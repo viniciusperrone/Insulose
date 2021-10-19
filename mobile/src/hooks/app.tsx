@@ -5,10 +5,12 @@ import { Context } from "./index";
 export function useMenu(){
     const context = useContext(Context);
 
-    const { openMenu, setOpenMenu } = context;
+    const { openMenu, setOpenMenu, modal, setModal } = context;
 
     return {
         openMenu,
-        setOpenMenu
+        setOpenMenu,
+        modal,
+        setModal
     };
 }

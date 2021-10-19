@@ -1,11 +1,16 @@
 import { StyleSheet } from 'react-native';
 
-import { fonts } from '../../../style/fonts';
-import { colors } from '../../../style/colors';
+import { fonts } from '../../../../style/fonts';
+import { colors } from '../../../../style/colors';
 
 export const style = StyleSheet.create({
   container: {
     flex: 1
+  },
+  containerContent: {
+    width: '100%',
+    position: 'absolute',
+    bottom: 0
   },
   title: {
     fontSize: 28,
