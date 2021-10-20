@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\Yarn\bin\yarn.js add axios
+  C:\Program Files\nodejs\node.exe C:\Program Files\Yarn\bin\yarn.js
 
 PATH: 
   C:\Users\perro\bin;C:\Program Files\Git\mingw32\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw32\bin;C:\Program Files\Git\usr\bin;C:\Users\perro\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\Yarn\bin;C:\Program Files\GtkSharp\2.12\bin;C:\Users\perro\Downloads\sqlite3;C:\Users\perro\AppData\Local\Programs\Python\Python38-32\Scripts;C:\Users\perro\AppData\Local\Programs\Python\Python38-32;C:\Users\perro\AppData\Local\Microsoft\WindowsApps;C:\Users\perro\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\perro\AppData\Roaming\npm;C:\Users\perro\AppData\Local\Yarn\bin;C:\Program Files\MySQL\MySQL Server 5.7\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -33,6 +33,7 @@ npm manifest:
       "@react-native-community/checkbox": "^0.5.8",
       "@react-navigation/native": "^6.0.6",
       "@react-navigation/stack": "^6.0.11",
+      "axios": "^0.23.0",
       "expo": "~42.0.1",
       "expo-app-loading": "1.1.2",
       "expo-font": "~9.2.1",
@@ -41,11 +42,11 @@ npm manifest:
       "react": "16.13.1",
       "react-dom": "16.13.1",
       "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+      "react-native-gesture-handler": "~1.10.2",
       "react-native-masked-text": "^1.13.0",
       "react-native-safe-area-context": "3.2.0",
       "react-native-screens": "~3.4.0",
-      "react-native-web": "~0.13.12",
-      "react-native-gesture-handler": "~1.10.2"
+      "react-native-web": "~0.13.12"
     },
     "devDependencies": {
       "@babel/core": "^7.9.0",

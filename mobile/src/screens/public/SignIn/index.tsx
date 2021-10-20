@@ -8,6 +8,9 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+import { useNavigation } from '@react-navigation/core';
+import { useAuth } from '../../../hooks/auth';
+
 import Modal from '../../../components/Modal';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
@@ -16,18 +19,55 @@ import Background from '../../../assets/background-secondary.jpeg';
 
 import { style } from './style';
 import { colors } from '../../../style/colors';
-import { useNavigation } from '@react-navigation/core';
+
+import api from '../../../server/api';
+
+type UserData = {
+  email: string;
+  password: string;
+}
 
 const SignIn: React.FC = () => {
 
+  const { user, setUser } = useAuth();
+  const [userLogin, setUserLogin] = useState({} as UserData);
   const [security, setSecurity] = useState(true);
+  const [error, setError] = useState(true);
 
   const navigation = useNavigation();
 
-  function handleSignIn(){
-    navigation.navigate('Dashboard');
+  async function handleSignIn() {
+
+    if (userLogin.email.length < 5 || userLogin.password.length < 6) {
+      setError(true);
+      return;
+    }
+    const response = await api.post('/sessions', {
+      email: userLogin.email,
+      password: userLogin.password
+    });
+
+    if (response) {
+      setUser({
+        id: response.data.session.id,
+        first_name: response.data.session.first_name,
+        last_name: response.data.session.last_name,
+        birth_date: response.data.session.birth_date,
+        sex_gender: response.data.session.sex_gender,
+        weight: response.data.session.weight,
+        height: response.data.session.height,
+        email: response.data.session.email,
+        password: response.data.session.password
+      });
+      
+      api.defaults.headers.authorization = `Bearer ${response.data.token}`;      
+      navigation.navigate('Dashboard');
+    }
+
+    setError(true);
+    return;
   }
-  function handleSignUp(){
+  function handleSignUp() {
     navigation.navigate('SignUp');
   }
   return (
@@ -41,12 +81,26 @@ const SignIn: React.FC = () => {
           <View style={style.form}>
             <View style={{ alignSelf: 'center' }}>
               <Text style={style.subtitle}>E-mail</Text>
-              <Input width={300} />
+              <Input
+                width={300}
+                defaultValue={userLogin.email}
+                onChangeText={e => setUserLogin({
+                  email: e,
+                  password: userLogin.password
+                })}
+              />
             </View>
 
             <View style={{ alignSelf: 'center' }}>
               <Text style={style.subtitle}>Senha</Text>
-              <Input width={300} secureTextEntry={security}>
+              <Input width={300}
+                secureTextEntry={security}
+                defaultValue={userLogin.password}
+                onChangeText={e => setUserLogin({
+                  email: userLogin.email,
+                  password: e
+                })}
+              >
                 <TouchableOpacity onPress={() => setSecurity(!security)}>
                   {
                     security

@@ -23,8 +23,6 @@ const Modal = ({ children, height }: Props) => {
   ).start();
 
   const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
-
-  console.log('ESTA RENDERIZANDO AQUI TAMBEM');
   return (
     <Animated.View style={[style.container, { opacity: 1, height: heightAnimated }]}>
       <View

@@ -4,7 +4,6 @@ import {
   ImageBackground,
   Text,
   View,
-  TextInput,
   TouchableOpacity,
   Picker,
 } from 'react-native';
@@ -12,8 +11,7 @@ import { TextInputMask } from 'react-native-masked-text';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
-import { useAuth } from '../../../hooks/auth';
-import { useMenu } from '../../../hooks/app';
+
 
 import Modal from '../../../components/Modal';
 import Input from '../../../components/Input';
@@ -117,6 +115,8 @@ const SignUp: React.FC = () => {
       setError(true);
       return;
     }
+
+    console.log(response);
 
     setModal({
       default: false,
@@ -319,7 +319,20 @@ const SignUp: React.FC = () => {
                 <View style={{ width: 300, alignSelf: 'center' }}>
                   <Text style={style.subtitle}>Email</Text>
                 </View>
-                <Input width={300} />
+                <Input 
+                  width={300} 
+                  defaultValue={user.email}
+                  onChangeText={(e) => setUser({
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    birth_date: user.birth_date,
+                    sex_gender: user.sex_gender,
+                    weight: user.weight,
+                    height: user.height,
+                    email: e,
+                    password: user.password
+                  })}
+                />
 
                 <View style={{ width: 300, alignSelf: 'center' }}>
                   <Text style={style.subtitle}>Senha</Text>

@@ -6,7 +6,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-
+import { useAuth } from '../../../hooks/auth';
 import { useMenu } from '../../../hooks/app';
 
 import Background from '../../../components/Background';
@@ -17,11 +17,12 @@ import { style } from './style';
 
 const Dashboard: React.FC = () => {
   const { openMenu } = useMenu();
+  const { user } = useAuth();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Background>
         <Header />
-        <Text style={style.title}>Olá, Meison</Text>
+        <Text style={style.title}>Olá, {user.first_name}</Text>
         <Text style={style.subtitle}>seja bem-vindo</Text>
         <View style={style.content}>
 
