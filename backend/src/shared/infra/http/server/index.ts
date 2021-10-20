@@ -9,6 +9,6 @@ app.use(express.json());
 app.use(cors());
 app.use(routes);
 
-app.listen(3000, () => {
+app.listen(3000, '192.168.1.103',() => {
   console.log('Server started on port 3000!');
-})
+});
