@@ -1,6 +1,7 @@
 import React from 'react';
-import { Modal, View, Text } from 'react-native';
+import { Modal, View, Text, TouchableOpacity } from 'react-native';
 
+import { useError } from '../../hooks/app';
 import { style } from './style';
 
 interface ModalProps {
@@ -9,9 +10,14 @@ interface ModalProps {
 }
 
 const Error: React.FC<ModalProps> = ({ enter, register }) => {
+  const { error, setError } = useError();
+
+  function handleError(){
+    setError(!error);
+  }
   return (
     <Modal style={style.background} transparent visible={true}>
-      <View style={style.container}>
+      <TouchableOpacity style={style.container} onPress={handleError}>
         <View style={style.header}>
           <Text style={style.textHeader}>Erro!</Text>
         </View>
@@ -25,7 +31,7 @@ const Error: React.FC<ModalProps> = ({ enter, register }) => {
             }
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
     </Modal>
   );
 }

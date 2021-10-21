@@ -70,11 +70,9 @@ const SignUp: React.FC = () => {
   const [security, setSecurity] = useState(true);
   const { error, setError } = useError();
 
-  console.log(user);
-
   function HandleSignUpOfPartOne() {
   
-    if (user.first_name.trim().length < 6 || user.last_name.trim().length < 6 || user.sex_gender === '') {
+    if (!user.birth_date || !user.first_name || user.first_name.trim().length < 6 || !user.last_name ||user.last_name.trim().length < 6 || !user.sex_gender || user.sex_gender === '') {
       setError(true);
       return;
     }
@@ -86,7 +84,8 @@ const SignUp: React.FC = () => {
   }
 
   function HandleSignUpOfPartSecond() {
-    if (user.weight === 0 && user.height === 0) {
+    if (!user.weight || user.weight === 0 || !user.height || user.height === 0) {
+      setError(true)
       return;
     }
     setModal({
@@ -97,7 +96,8 @@ const SignUp: React.FC = () => {
   }
 
   async function HandleSignUpOfPartThird() {
-    if (user.email.trim().length < 6 || user.email.trim().length < 6 || !validation) {
+    if (!user.email || user.email.trim().length < 6 || !user.password || user.password.trim().length < 6 || !validation) {
+      setError(true);
       return;
     }
 
@@ -131,9 +131,6 @@ const SignUp: React.FC = () => {
         source={Background}
         style={style.container}
       >
-        {
-          error && <Error register />
-        }
         {
           modal.default
             ?
@@ -390,7 +387,9 @@ const SignUp: React.FC = () => {
             </Modal>
             : null
         }
-
+        {
+          error && <Error register />
+        }
       </ImageBackground>
     </SafeAreaView>
   );
