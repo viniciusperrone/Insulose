@@ -11,11 +11,12 @@ import { TextInputMask } from 'react-native-masked-text';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
-
+import { useError } from '../../../hooks/app';
 
 import Modal from '../../../components/Modal';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
+import Error from '../../../components/Error';
 
 import Background from '../../../assets/background-secondary.jpeg';
 
@@ -67,7 +68,7 @@ const SignUp: React.FC = () => {
   const [selected, setSelected] = useState('');
   const [validation, setValidation] = useState(false);
   const [security, setSecurity] = useState(true);
-  const [error, setError] = useState(false);
+  const { error, setError } = useError();
 
   console.log(user);
 
@@ -115,9 +116,6 @@ const SignUp: React.FC = () => {
       setError(true);
       return;
     }
-
-    console.log(response);
-
     setModal({
       default: false,
       weight: false,
@@ -133,6 +131,9 @@ const SignUp: React.FC = () => {
         source={Background}
         style={style.container}
       >
+        {
+          error && <Error register />
+        }
         {
           modal.default
             ?

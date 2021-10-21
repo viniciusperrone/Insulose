@@ -10,10 +10,12 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/core';
 import { useAuth } from '../../../hooks/auth';
+import { useError } from '../../../hooks/app';
 
 import Modal from '../../../components/Modal';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
+import Error from '../../../components/Error';
 
 import Background from '../../../assets/background-secondary.jpeg';
 
@@ -30,15 +32,15 @@ type UserData = {
 const SignIn: React.FC = () => {
 
   const { user, setUser } = useAuth();
+  const { error, setError } = useError();
   const [userLogin, setUserLogin] = useState({} as UserData);
   const [security, setSecurity] = useState(true);
-  const [error, setError] = useState(true);
 
   const navigation = useNavigation();
 
   async function handleSignIn() {
 
-    if (userLogin.email.length < 5 || userLogin.password.length < 6) {
+    if (!userLogin.email || userLogin.email.length < 5 || userLogin.password || userLogin.password.length < 6) {
       setError(true);
       return;
     }
@@ -129,6 +131,7 @@ const SignIn: React.FC = () => {
             </View>
           </View>
         </Modal>
+        { error && <Error enter x/>}
       </ImageBackground>
     </SafeAreaView>
   );

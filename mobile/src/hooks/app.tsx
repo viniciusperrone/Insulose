@@ -14,3 +14,14 @@ export function useMenu(){
         setModal
     };
 }
+
+export function useError() {
+    const context = useContext(Context);
+
+    const { error, setError } = context;
+
+    return {
+        error,
+        setError
+    };
+}

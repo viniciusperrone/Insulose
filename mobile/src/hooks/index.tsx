@@ -28,12 +28,15 @@ export const Context = createContext({});
 export default function ContextProvider({ children } : Props){
 
     const [openMenu, setOpenMenu] = useState(false);
+    const [error, setError] = useState(false);
     const [user, setUser] = useState({} as UserData);
     const [modal, setModal] = useState({} as SignUp);
     return (
     <Context.Provider value={{
         openMenu,
         setOpenMenu,
+        error,
+        setError,
         user, 
         setUser,
         modal, 
