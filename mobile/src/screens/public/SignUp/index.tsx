@@ -88,6 +88,7 @@ const SignUp: React.FC = () => {
       setError(true)
       return;
     }
+
     setModal({
       default: false,
       weight: false,
@@ -125,6 +126,7 @@ const SignUp: React.FC = () => {
     navigation.navigate('SignIn');
   }
 
+  console.log(user);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground
@@ -210,7 +212,7 @@ const SignUp: React.FC = () => {
                     </View>
                     <View style={[style.input, { width: 100, marginTop: 21 }]}>
                       <Picker
-                        selectedValue={selected}
+                        selectedValue={user.sex_gender}
                         style={{
                           fontSize: 16,
                           fontFamily: fonts.poppins_700
@@ -227,7 +229,7 @@ const SignUp: React.FC = () => {
                             email: user.email,
                             password: user.password
                           });
-                          return setSelected(itemValue)
+                          return setSelected(itemValue);
                         }}
                       >
                         <Picker.Item label="Masculino" value="Masculino" />
@@ -395,4 +397,4 @@ const SignUp: React.FC = () => {
   );
 };
 
-export default React.memo(SignUp);
+export default SignUp;

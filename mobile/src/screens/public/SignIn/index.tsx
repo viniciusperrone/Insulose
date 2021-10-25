@@ -40,7 +40,11 @@ const SignIn: React.FC = () => {
 
   async function handleSignIn() {
 
-    if (!userLogin.email || userLogin.email.length < 5 || userLogin.password || userLogin.password.length < 6) {
+    if(!userLogin.email || !userLogin.password){
+      setError(true);
+      return;
+    }
+    if (userLogin.email.length < 5 || userLogin.password.length < 6) {
       setError(true);
       return;
     }
@@ -62,6 +66,12 @@ const SignIn: React.FC = () => {
         password: response.data.session.password
       });
       
+      const status = await response.status;
+      console.log(status);
+
+      if(status !== 200){
+        console.log('Deu Error');
+      }
       api.defaults.headers.authorization = `Bearer ${response.data.token}`;      
       navigation.navigate('Dashboard');
     }
@@ -131,7 +141,7 @@ const SignIn: React.FC = () => {
             </View>
           </View>
         </Modal>
-        { error && <Error enter x/>}
+        { error && <Error enter />}
       </ImageBackground>
     </SafeAreaView>
   );

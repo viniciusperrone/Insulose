@@ -16,7 +16,8 @@ const Error: React.FC<ModalProps> = ({ enter, register }) => {
     setError(!error);
   }
   return (
-    <Modal style={style.background} transparent visible={true}>
+    <Modal transparent visible={true}>
+      <View style={style.background}>
       <TouchableOpacity style={style.container} onPress={handleError}>
         <View style={style.header}>
           <Text style={style.textHeader}>Erro!</Text>
@@ -32,6 +33,7 @@ const Error: React.FC<ModalProps> = ({ enter, register }) => {
           </Text>
         </View>
       </TouchableOpacity>
+      </View>
     </Modal>
   );
 }

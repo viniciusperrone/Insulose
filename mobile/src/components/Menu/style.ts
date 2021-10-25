@@ -17,6 +17,8 @@ export const style = StyleSheet.create({
     height: 80,
     backgroundColor: colors.blue_oil,
     borderTopRightRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'space-evenly'
   },
   content: {
     flex: 1,
@@ -26,6 +28,16 @@ export const style = StyleSheet.create({
     height: 40,
     flexDirection: 'row',
     alignItems: 'center'
+  },
+  title: {
+    fontSize: 22,
+    fontFamily: fonts.poppins_700,
+    color: colors.white
+  },
+  subtitle: {
+    fontSize: 20,
+    fontFamily: fonts.poppins_600,
+    color: colors.white
   },
   text: {
     fontSize: 18,
@@ -37,6 +49,9 @@ export const style = StyleSheet.create({
     fontFamily: fonts.poppins_500,
     color: colors.white
   },
+  icon: {
+    marginHorizontal: 15
+  },
   line: {
     width: '100%',
     height: 5,
@@ -44,7 +59,7 @@ export const style = StyleSheet.create({
   },
   footer: {
     width: '100%',
-    height: '20%',
+    height: '15%',
     borderBottomRightRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
