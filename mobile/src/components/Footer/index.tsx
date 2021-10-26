@@ -14,6 +14,9 @@ import { style } from './style';
 const Footer: React.FC = () => {
   const navigation = useNavigation();
 
+  function handleMedicine(){
+    navigation.navigate('Medicine');
+  }
   function handleSchedule(){
     navigation.navigate('Schedule');
   }
@@ -25,7 +28,7 @@ const Footer: React.FC = () => {
       <TouchableOpacity style={style.button}>
         <Octicons name="bell" size={26} style={style.icon} />
       </TouchableOpacity>
-      <TouchableOpacity style={style.button}>
+      <TouchableOpacity style={style.button} onPress={handleMedicine}>
         <MaterialCommunityIcons name="pill" size={26} style={style.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={style.button} onPress={handleSchedule}>

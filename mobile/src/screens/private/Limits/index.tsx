@@ -6,7 +6,7 @@ import Footer from '../../../components/Footer';
 
 import { style } from './style';
 
-const Units: React.FC = () => {
+const Limits: React.FC = () => {
   return(
     <View style={style.container}>
       <HeaderApp title="Limites de glicemia" />
@@ -37,4 +37,4 @@ const Units: React.FC = () => {
   );
 };
 
-export default Units;
+export default Limits;
