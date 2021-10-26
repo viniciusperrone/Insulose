@@ -9,6 +9,9 @@ import SignUp from '../screens/public/SignUp';
 // Telas privadas
 import Dashboard from '../screens/private/Dashboard';
 import Settings from '../screens/private/Settings';
+import UpdateProfile from '../screens/private/Update';
+import Units from '../screens/private/Units';
+import Limits from '../screens/private/Limits';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -44,6 +47,21 @@ const AuthRoutes: React.FC = () => {
             <Screen
                 name="Settings"
                 component={Settings}
+            />
+
+            <Screen
+                name="UpdateUser"
+                component={UpdateProfile}
+            />
+
+            <Screen
+                name="Units"
+                component={Units}
+            />
+
+            <Screen
+                name="Limits"
+                component={Limits}
             />
 
         </Navigator>

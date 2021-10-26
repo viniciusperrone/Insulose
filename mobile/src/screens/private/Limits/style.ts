@@ -12,21 +12,12 @@ export const style = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.gray_light
   },
-  containerButton: {
-    width: '100%',
-    height: 130,
-    backgroundColor: colors.white,
-    flexDirection: 'row',
-    marginBottom: 10
-  },
   button: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'flex-end'
-  },
-  icon: {
-    color: colors.blue_oil,
-    marginRight: 15
+    width: '100%', 
+    height: 70,
+    marginVertical: 10,
+    justifyContent: 'space-evenly',
+    paddingLeft: 10
   },
   title: {
     fontSize: 18,
@@ -41,4 +32,5 @@ export const style = StyleSheet.create({
     color: colors.dark_gray,
     marginLeft: 15
   }
+  
 });

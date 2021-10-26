@@ -5,9 +5,10 @@ import { colors } from '../../style/colors';
 
 export const style = StyleSheet.create({
   container: {
+    height: 70,
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'center'
+    alignItems: 'center'
   },
   icon: {
     color: colors.white,

@@ -17,6 +17,7 @@ import {
   Ionicons
 } from '@expo/vector-icons';
 
+import { useNavigation } from '@react-navigation/native';
 import { useMenu } from '../../hooks/app';
 import { useAuth } from '../../hooks/auth';
 
@@ -24,6 +25,7 @@ import { style } from './style';
 import { colors } from '../../style/colors';
 
 const Menu: React.FC = () => {
+  const navigation = useNavigation();
   const [width, setWidth] = useState<any>(new Animated.Value(0));
   const { user } = useAuth();
   Animated.timing(
@@ -58,9 +60,10 @@ const Menu: React.FC = () => {
   const year = Number(user.birth_date.slice(0, 4));
 
   const age = handleAge(day, month, year);
-  console.log(age);
-  const date = user.birth_date;
 
+  function handleSettings(){
+    navigation.navigate('Settings');
+  }
   const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
   return (
     <Animated.View style={[style.container, { opacity: 1, width: width }]}>
@@ -69,7 +72,7 @@ const Menu: React.FC = () => {
         style={style.header}
       >
         <Text style={style.title}>{`${user.first_name} ${user.last_name}`}</Text>
-        <Text style={style.subtitle}>{age}</Text>
+        <Text style={style.subtitle}>{age} anos</Text>
       </AnimatedGradient>
       {/* <View style={style.content}> */}
       <View style={{ flex: 1, backgroundColor: colors.white }}>
@@ -81,7 +84,7 @@ const Menu: React.FC = () => {
           <Entypo name="export" size={26} color={colors.blue_oil} style={style.icon} />
           <Text style={style.text}>Exportar</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity style={style.button} onPress={handleSettings}>
           <Ionicons name="settings-sharp" size={24} color={colors.blue_oil} style={style.icon} />
           <Text style={style.text}>Configurações</Text>
         </TouchableOpacity>

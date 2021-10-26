@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native'
+import { Text, View } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -22,7 +22,7 @@ const HeaderApp: React.FC<HeaderProps> = ({ title }) => {
       colors={['#02005F', '#02007A']}
       style={style.container}
     >
-      <AntDesign name="arrowleft" size={24} style={style.icon} />
+      <AntDesign name="arrowleft" size={28} style={style.icon} onPress={handleGoBack}/>
       <Text style={style.title}>{title}</Text>
     </LinearGradient>
   );

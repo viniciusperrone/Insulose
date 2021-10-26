@@ -17,7 +17,7 @@ export const style = StyleSheet.create({
     height: 80,
     backgroundColor: colors.blue_oil,
     borderTopRightRadius: 20,
-    alignItems: 'center',
+    paddingLeft: 20,
     justifyContent: 'space-evenly'
   },
   content: {
@@ -30,12 +30,12 @@ export const style = StyleSheet.create({
     alignItems: 'center'
   },
   title: {
-    fontSize: 22,
+    fontSize: 20,
     fontFamily: fonts.poppins_700,
     color: colors.white
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: fonts.poppins_600,
     color: colors.white
   },
