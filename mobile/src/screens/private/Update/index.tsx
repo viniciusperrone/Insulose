@@ -32,17 +32,17 @@ const UpdateProfile: React.FC = () => {
 
         <TouchableOpacity style={style.button}>
           <Text style={style.title}>Data de nascimento</Text>
-          <Text style={style.subtitle}>{user.birth_date}</Text>
+          <Text style={style.subtitle}>{`${user.birth_date.slice(8,10)}/${user.birth_date.slice(5,7)}/${user.birth_date.slice(0,4)}`}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={style.button}>
           <Text style={style.title}>Peso</Text>
-          <Text style={style.subtitle}>{user.weight}</Text>
+          <Text style={style.subtitle}>{user.weight} kg</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={style.button}>
           <Text style={style.title}>Altura</Text>
-          <Text style={style.subtitle}>{user.height}</Text>
+          <Text style={style.subtitle}>{user.height} cm</Text>
         </TouchableOpacity>
       </View>
       <Footer />
