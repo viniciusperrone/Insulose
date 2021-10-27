@@ -14,18 +14,24 @@ import { style } from './style';
 const Footer: React.FC = () => {
   const navigation = useNavigation();
 
+  function handleGlucose(){
+    navigation.navigate('Glucose');
+  }
   function handleMedicine(){
     navigation.navigate('Medicine');
   }
   function handleSchedule(){
     navigation.navigate('Schedule');
   }
+  function handleAlarm(){
+    navigation.navigate('Alarm');
+  }
   return (
     <View style={style.container}>
-      <TouchableOpacity style={style.button}>
+      <TouchableOpacity style={style.button} onPress={handleGlucose}>
         <Fontisto name="blood-drop" size={26} style={style.icon} />
       </TouchableOpacity>
-      <TouchableOpacity style={style.button}>
+      <TouchableOpacity style={style.button} onPress={handleAlarm}>
         <Octicons name="bell" size={26} style={style.icon} />
       </TouchableOpacity>
       <TouchableOpacity style={style.button} onPress={handleMedicine}>

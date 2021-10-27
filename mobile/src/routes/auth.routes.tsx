@@ -14,6 +14,8 @@ import Units from '../screens/private/Units';
 import Limits from '../screens/private/Limits';
 import Schedule from '../screens/private/Schedule';
 import Medicine from '../screens/private/Medicine';
+import Alarm from '../screens/private/Alarm';
+import Glucose from '../screens/private/Glucose';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -74,6 +76,16 @@ const AuthRoutes: React.FC = () => {
             <Screen
                 name="Medicine"
                 component={Medicine}
+            />
+
+            <Screen
+                name="Alarm"
+                component={Alarm}
+            />
+
+            <Screen
+                name="Glucose"
+                component={Glucose}
             />
 
         </Navigator>

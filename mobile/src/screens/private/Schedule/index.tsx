@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { Feather, AntDesign } from '@expo/vector-icons';
 
 import Background from '../../../components/Background';
 import Header from '../../../components/Header';
@@ -60,8 +61,21 @@ const Schedule: React.FC = () => {
       <Header />
       <View style={style.calendar}>
         <View style={style.headerCalendar}>
+          <TouchableOpacity>
+            <Feather name="arrow-left" size={30} style={style.icon} />
+          </TouchableOpacity>
           <Text style={style.title}>{getMonth}</Text>
+          <TouchableOpacity>
+            <Feather name="arrow-right" size={30} style={style.icon} />
+          </TouchableOpacity>
         </View>
+        <View style={style.footerCalendar}>
+          <TouchableOpacity>
+            <AntDesign name="pluscircle" size={20} color="white" />
+          </TouchableOpacity>
+          <Text style={style.textIcon}>Adicionar à agenda</Text>
+        </View>
+
       </View>
       <Footer />
     </Background>

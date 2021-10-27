@@ -15,17 +15,29 @@ export const style = StyleSheet.create({
   headerCalendar: {
     width: '100%',
     height: 80,
+    flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center'
   },
   day: {
 
   },
+  footerCalendar: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   query: {},
   icon: {
-
+    color: colors.dark_gray,
   },
-  textIcon: {},
+  textIcon: {
+    fontSize: 16,
+    fontFamily: fonts.roboto_400,
+    color: colors.white,
+    marginLeft: 10
+  },
   text: {},
   title: {
     fontSize: 25,
