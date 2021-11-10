@@ -28,6 +28,7 @@ const Menu: React.FC = () => {
   const navigation = useNavigation();
   const [width, setWidth] = useState<any>(new Animated.Value(0));
   const { user } = useAuth();
+  const { modal, setModal } = useMenu();
   Animated.timing(
     width,
     {
@@ -62,7 +63,23 @@ const Menu: React.FC = () => {
   const age = handleAge(day, month, year);
 
   function handleSettings(){
+    setModal(false);
     navigation.navigate('Settings');
+  }
+  function handleGlucose(){
+    setModal(false);
+    navigation.navigate('Glucose');
+  }
+  function handleAlarm(){
+    setModal(false);
+    navigation.navigate('Alarm');
+  }
+  function handleMedicine(){
+    setModal(false);
+    navigation.navigate('Medicine');
+  }
+  function handleSchedule(){
+    navigation.navigate('Schedule');
   }
   const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
   return (
@@ -91,19 +108,19 @@ const Menu: React.FC = () => {
 
         <View style={style.line} />
 
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity style={style.button} onPress={handleGlucose}>
           <Fontisto name="blood-drop" size={26} color={colors.blue_oil} style={style.icon} />
           <Text style={style.text}>Glicemia</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity style={style.button} onPress={handleAlarm}>
           <Octicons name="bell" size={26} color={colors.blue_oil} style={style.icon} />
           <Text style={style.text}>Alarme</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity style={style.button} onPress={handleMedicine}>
           <MaterialCommunityIcons name="pill" size={26} color={colors.blue_oil} style={style.icon} />
           <Text style={style.text}>Remédios</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity style={style.button} onPress={handleSchedule}>
           <AntDesign name="calendar" size={26} color={colors.blue_oil} style={style.icon} />
           <Text style={style.text}>Consultas</Text>
         </TouchableOpacity>

@@ -45,7 +45,7 @@ export const style = StyleSheet.create({
     backgroundColor: colors.white,
     fontSize: 16,
     fontFamily: fonts.poppins_700,
-    color: colors.blue_oil,
+    color: colors.dark_gray,
     alignSelf: 'center',
     paddingLeft: 10,
     marginTop: 5

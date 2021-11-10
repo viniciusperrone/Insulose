@@ -59,8 +59,8 @@ const SignUp: React.FC = () => {
     last_name: "",
     birth_date: null,
     sex_gender: "",
-    weight: 0,
-    height: 0,
+    weight: null,
+    height: null,
     email: "",
     password: ""
   });
@@ -69,6 +69,10 @@ const SignUp: React.FC = () => {
   const [validation, setValidation] = useState(false);
   const [security, setSecurity] = useState(true);
   const { error, setError } = useError();
+
+  const spaceFirst = '         ';
+  const spaceSecond = '         ';
+  const spaceThird = '         ';
 
   function HandleSignUpOfPartOne() {
   
@@ -187,6 +191,7 @@ const SignUp: React.FC = () => {
                       <TextInputMask
                         style={style.input}
                         type={'datetime'}
+                        placeholder={`${spaceFirst}/${spaceSecond}/${spaceThird}`}
                         value={user.birth_date}
                         onChangeText={(e) => setUser({
                           first_name: user.first_name,
@@ -210,12 +215,14 @@ const SignUp: React.FC = () => {
                     <View style={{ width: 150, alignSelf: 'center', justifyContent: 'center' }}>
                       <Text style={style.subtitle}>Sexo</Text>
                     </View>
-                    <View style={[style.input, { width: 100, marginTop: 21 }]}>
+                    <View style={[style.input, { width: 130, marginTop: 21 }]}>
                       <Picker
                         selectedValue={user.sex_gender}
                         style={{
                           fontSize: 16,
-                          fontFamily: fonts.poppins_700
+                          fontFamily: fonts.poppins_700,
+                          fontWeight: 'bold',
+                          color: colors.dark_gray
                         }}
 
                         onValueChange={(itemValue, itemIndex) => {
@@ -232,9 +239,9 @@ const SignUp: React.FC = () => {
                           return setSelected(itemValue);
                         }}
                       >
-                        <Picker.Item label="Masculino" value="Masculino" />
-                        <Picker.Item label="Feminino" value="Feminino" />
-                        <Picker.Item label="Outro" value="Outro" />
+                        <Picker.Item color={colors.dark_gray} label="Masculino" value="Masculino" />
+                        <Picker.Item color={colors.dark_gray} label="Feminino" value="Feminino" />
+                        <Picker.Item color={colors.dark_gray} label="Outro" value="Outro" />
                       </Picker>
                     </View>
                   </View>
