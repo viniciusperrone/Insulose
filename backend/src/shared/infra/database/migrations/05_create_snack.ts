@@ -7,12 +7,10 @@ export async function up(knex: Knex){
     table.integer('quantity_snack').notNullable(),
     table.float('calorie').notNullable(),
     table.string('drink').notNullable(),
-    table.string('id_user')
+    table.string('id_user_snack')
       .notNullable()
       .references('id')
       .inTable('users')
-      .onDelete('CASCADE')
-      .onUpdate('CASCADE')
   });
 }
 

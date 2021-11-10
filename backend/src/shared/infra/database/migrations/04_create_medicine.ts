@@ -7,12 +7,10 @@ export async function up(knex: Knex){
     table.time('hours_medicine').notNullable(),
     table.float('quantity_medicine').notNullable(),
     table.integer('times_day').notNullable(),
-    table.string('id_user')
+    table.string('id_user_medicine')
       .notNullable()
       .references('id')
       .inTable('users')
-      .onDelete('CASCADE')
-      .onUpdate('CASCADE')
   });
 }
 
