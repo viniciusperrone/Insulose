@@ -31,6 +31,11 @@ export const style = StyleSheet.create({
     fontFamily: fonts.poppins_400,
     color: colors.dark_gray,
     marginLeft: 15
+  },
+  titleModal: {
+    fontSize: 20,
+    fontFamily: fonts.poppins_600,
+    color: colors.black
   }
   
 });

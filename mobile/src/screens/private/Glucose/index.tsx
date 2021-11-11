@@ -1,5 +1,5 @@
 import React from 'react';
-import {} from 'react-native';
+import { Text } from 'react-native';
 
 import Background from '../../../components/Background';
 import Header from '../../../components/Header';
@@ -9,6 +9,7 @@ const Glucose: React.FC = () => {
   return(
     <Background>
       <Header />
+        <Text>Glicose</Text>
       <Footer />
     </Background>
   );
