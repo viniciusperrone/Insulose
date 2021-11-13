@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import Dialog from 'react-native-dialog';
+import RadioButtonGroup, { RadioButtonItem } from "expo-radio-button";
+
+// import { } from 'react-native-datepicker';
 
 import { useAuth } from '../../../hooks/auth';
 
@@ -174,8 +177,9 @@ const UpdateProfile: React.FC = () => {
           <Dialog.Title style={style.titleModal}>
             Sexo
           </Dialog.Title>
+          <Button ></Button>
           <Dialog.CodeInput></Dialog.CodeInput>
-          <Dialog.Button label="cancelar" onPress={() => setVisible(false)} />
+          <Dialog.Button  label="cancelar" onPress={() => setVisible(false)} />
           <Dialog.Button label="ok" onPress={handleUpdateProfile} />
         </Dialog.Container>
       }

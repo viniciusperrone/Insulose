@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\Yarn\bin\yarn.js add react-native-datepicker-dialog
+  C:\Program Files\nodejs\node.exe C:\Program Files\Yarn\bin\yarn.js add @types/expo-radio-button -D
 
 PATH: 
   C:\Users\perro\bin;C:\Program Files\Git\mingw32\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw32\bin;C:\Program Files\Git\usr\bin;C:\Users\perro\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\Yarn\bin;C:\Program Files\GtkSharp\2.12\bin;C:\Users\perro\Downloads\sqlite3;C:\Users\perro\AppData\Local\Programs\Python\Python38-32\Scripts;C:\Users\perro\AppData\Local\Programs\Python\Python38-32;C:\Users\perro\AppData\Local\Microsoft\WindowsApps;C:\Users\perro\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\perro\AppData\Roaming\npm;C:\Users\perro\AppData\Local\Yarn\bin;C:\Program Files\MySQL\MySQL Server 5.7\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -14,7 +14,17 @@ Platform:
   win32 ia32
 
 Trace: 
-  Error: EIO: i/o error, copyfile 'C:\Users\perro\AppData\Local\Yarn\Cache\v6\npm-typescript-4.0.8-5739105541db80a971fdbd0d56511d1a6f17d37f-integrity\node_modules\typescript\lib\typescript.js' -> 'C:\Users\perro\OneDrive\Área de Trabalho\workspace\Insulose\mobile\node_modules\typescript\lib\typescript.js'
+  Error: https://registry.yarnpkg.com/@types%2fexpo-radio-button: Not found
+      at Request.params.callback [as _callback] (C:\Program Files\Yarn\lib\cli.js:66096:18)
+      at Request.self.callback (C:\Program Files\Yarn\lib\cli.js:140748:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (C:\Program Files\Yarn\lib\cli.js:141720:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (C:\Program Files\Yarn\lib\cli.js:141642:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (_stream_readable.js:1221:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
 
 npm manifest: 
   {
@@ -35,27 +45,30 @@ npm manifest:
       "@react-navigation/native": "^6.0.6",
       "@react-navigation/stack": "^6.0.11",
       "axios": "^0.23.0",
-      "expo": "~42.0.1",
-      "expo-app-loading": "1.1.2",
-      "expo-font": "~9.2.1",
-      "expo-linear-gradient": "~9.2.0",
-      "expo-status-bar": "~1.0.4",
-      "react": "16.13.1",
-      "react-dom": "16.13.1",
-      "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+      "expo": "^43.0.0",
+      "expo-app-loading": "~1.2.1",
+      "expo-font": "~10.0.3",
+      "expo-linear-gradient": "~10.0.3",
+      "expo-radio-button": "^1.0.8",
+      "expo-status-bar": "~1.1.0",
+      "react": "17.0.1",
+      "react-dom": "17.0.1",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-43.tar.gz",
+      "react-native-datepicker": "^1.7.2",
+      "react-native-datepicker-dialog": "0.0.9",
       "react-native-dialog": "^9.2.0",
       "react-native-gesture-handler": "~1.10.2",
       "react-native-masked-text": "^1.13.0",
       "react-native-modal": "^13.0.0",
-      "react-native-safe-area-context": "3.2.0",
-      "react-native-screens": "~3.4.0",
-      "react-native-web": "~0.13.12"
+      "react-native-safe-area-context": "3.3.2",
+      "react-native-screens": "~3.8.0",
+      "react-native-web": "0.17.1"
     },
     "devDependencies": {
-      "@babel/core": "^7.9.0",
-      "@types/react": "~16.9.35",
-      "@types/react-native": "~0.63.2",
-      "typescript": "~4.0.0"
+      "@babel/core": "^7.12.9",
+      "@types/react": "~17.0.21",
+      "@types/react-native": "~0.64.12",
+      "typescript": "~4.3.5"
     },
     "private": true
   }
