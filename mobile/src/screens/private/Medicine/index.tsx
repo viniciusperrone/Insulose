@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-
 import { Feather } from '@expo/vector-icons';
 
 import Background from '../../../components/Background';
@@ -88,6 +87,12 @@ const Medicine: React.FC = () => {
                   style={style.input}
                   placeholder={'Dosagem, unidades'}
                   value={medicine.dosage}
+                  onChangeText={e => setMedicine({
+                    name: medicine.name,
+                    unit: medicine.unit,
+                    dosage: e,
+                    quantity: medicine.quantity
+                  })}
                 />
               </View>
               <View style={style.containerInput}>
@@ -97,6 +102,12 @@ const Medicine: React.FC = () => {
                   placeholder={'O valor'}
                   keyboardType={'decimal-pad'}
                   value={String(medicine.quantity)}
+                  onChangeText={e => setMedicine({
+                    name: medicine.name,
+                    unit: medicine.unit,
+                    dosage: medicine.dosage,
+                    quantity: Number(e)
+                  })}
                 />
               </View>
             </View>
