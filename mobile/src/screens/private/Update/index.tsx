@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import Dialog from 'react-native-dialog';
 import RadioButtonGroup, { RadioButtonItem } from "expo-radio-button";
 
@@ -30,6 +30,7 @@ const UpdateProfile: React.FC = () => {
   const { user, setUser } = useAuth();
   const [profile, setProfile] = useState({} as ProfileUpdate);
   const [visible, setVisible] = useState(false);
+  const [date, setDate] = useState<string>();
   const [modal, setModal] = useState<number>();
 
   function handleModalFirstName() {
@@ -173,19 +174,21 @@ const UpdateProfile: React.FC = () => {
       }
       {
         modal === 3 &&
-        <Dialog.Container visible={visible}>
-          <Dialog.Title style={style.titleModal}>
-            Sexo
-          </Dialog.Title>
-          <Button ></Button>
-          <Dialog.CodeInput></Dialog.CodeInput>
-          <Dialog.Button  label="cancelar" onPress={() => setVisible(false)} />
-          <Dialog.Button label="ok" onPress={handleUpdateProfile} />
-        </Dialog.Container>
+        <RadioButtonGroup
+
+       >
+        <RadioButtonItem value="test2" label="Example with string" />
+        <RadioButtonItem
+          value="test"
+          label={
+            <Text style={{ color: "red" }}>Example passing React Element</Text>
+          }
+        />
+      </RadioButtonGroup>
       }
       {
-        modal === 4 &&
-        <Dialog.Container></Dialog.Container>
+        modal === 4 && <Text>OK</Text>
+        
       }
       {
         modal === 5 &&
