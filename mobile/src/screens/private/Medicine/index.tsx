@@ -10,9 +10,17 @@ import Footer from '../../../components/Footer';
 
 import { style } from './style';
 
+type MedicineData = {
+  name: string;
+  unit: string;
+  dosage: string;
+  quantity: number;
+} 
+
 const Medicine: React.FC = () => {
 
   const [add, setAdd] = useState(false);
+  const [medicine, setMedicine] = useState({} as MedicineData);
 
   async function addMedicine(){
     return;
@@ -51,13 +59,27 @@ const Medicine: React.FC = () => {
                 <TextInput 
                   style={style.input}
                   placeholder={'Digite o nome'}
+                  value={medicine.name}
+                  onChangeText={e => setMedicine({
+                    name: e,
+                    unit: medicine.unit,
+                    dosage: medicine.dosage,
+                    quantity: medicine.quantity
+                  })}
                 />
               </View>
               <View style={style.containerInput}>
                 <Text style={style.titleModal}>Unidade</Text>
                 <TextInput 
                   style={style.input}
-                  placeholder={'Digite o nome'}
+                  placeholder={'Unidade'}
+                  value={medicine.unit}
+                  onChangeText={e => setMedicine({
+                    name: medicine.name,
+                    unit: e,
+                    dosage: medicine.dosage,
+                    quantity: medicine.quantity
+                  })}
                 />
               </View>
               <View style={style.containerInput}>
@@ -65,6 +87,7 @@ const Medicine: React.FC = () => {
                 <TextInput 
                   style={style.input}
                   placeholder={'Dosagem, unidades'}
+                  value={medicine.dosage}
                 />
               </View>
               <View style={style.containerInput}>
@@ -72,6 +95,8 @@ const Medicine: React.FC = () => {
                 <TextInput 
                   style={[style.input, { width: 150 }]}
                   placeholder={'O valor'}
+                  keyboardType={'decimal-pad'}
+                  value={String(medicine.quantity)}
                 />
               </View>
             </View>
