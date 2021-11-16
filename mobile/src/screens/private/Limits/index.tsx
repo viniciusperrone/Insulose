@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import Dialog from 'react-native-dialog';
 
+import { useMenu, useError } from '../../../hooks/app';
+
 import HeaderApp from '../../../components/HeaderApp';
+import Menu from '../../../components/Menu';
 import Footer from '../../../components/Footer';
+import Error from '../../../components/Error';
 
 import { style } from './style';
 
@@ -16,6 +20,9 @@ type LimitsData = {
 }
 
 const Limits: React.FC = () => {
+
+  const { openMenu, setOpenMenu } = useMenu();
+  const { error, setError } = useError();
   const [modal, setModal] = useState<number>();
   const [visible, setVisible] = useState(false);
   const [glucose, setGlucose] = useState({} as LimitsData);
@@ -163,19 +170,24 @@ const Limits: React.FC = () => {
       }
       <View style={style.line} />
       <Text>Faixa após a refeição</Text>
-      <TouchableOpacity style={style.button} onPress={FirstModal}>
+      <TouchableOpacity style={style.button}>
         <Text style={style.title}>Hiperglicemia</Text>
         <Text style={style.subtitle}>200 mg/dL</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={style.button} onPress={SecondModal}>
+      <TouchableOpacity style={style.button}>
         <Text style={style.title}>Glicemia alta</Text>
         <Text style={style.subtitle}>145 mg/dL</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={style.button} onPress={ThreeModal}>
+      <TouchableOpacity style={style.button}>
         <Text style={style.title}>Glicemia desejada</Text>
         <Text style={style.subtitle}>100 mg/dL</Text>
       </TouchableOpacity>
-
+      {
+        openMenu && <Menu />
+      }
+      {
+        error && <Error noFunctionality />
+      }
       <Footer />
     </View>
   );

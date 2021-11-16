@@ -7,17 +7,20 @@ import {
 } from 'react-native';
 
 import { useAuth } from '../../../hooks/auth';
-import { useMenu } from '../../../hooks/app';
+import { useMenu, useError } from '../../../hooks/app';
 
 import Background from '../../../components/Background';
 import Header from '../../../components/Header';
 import Menu from '../../../components/Menu';
+import Error from '../../../components/Error';
 
 import { style } from './style';
 
 const Dashboard: React.FC = () => {
   const { openMenu } = useMenu();
   const { user } = useAuth();
+  const { error } = useError();
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Background>
@@ -40,6 +43,10 @@ const Dashboard: React.FC = () => {
       </Background>
       {
         openMenu && <Menu />
+      }
+
+      {
+        error && <Error noFunctionality />
       }
     </SafeAreaView>
   );

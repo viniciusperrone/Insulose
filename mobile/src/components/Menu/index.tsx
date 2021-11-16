@@ -18,7 +18,7 @@ import {
 } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
-import { useMenu } from '../../hooks/app';
+import { useMenu, useError } from '../../hooks/app';
 import { useAuth } from '../../hooks/auth';
 
 import { style } from './style';
@@ -29,6 +29,7 @@ const Menu: React.FC = () => {
   const [width, setWidth] = useState<any>(new Animated.Value(0));
   const { user } = useAuth();
   const { modal, setModal } = useMenu();
+  const { setError } = useError();
   Animated.timing(
     width,
     {
@@ -62,6 +63,11 @@ const Menu: React.FC = () => {
 
   const age = handleAge(day, month, year);
 
+  function handleExports(){
+    setModal(false);
+    setError(true);
+    
+  }
   function handleSettings(){
     setModal(false);
     navigation.navigate('Settings');
@@ -93,11 +99,11 @@ const Menu: React.FC = () => {
       </AnimatedGradient>
       {/* <View style={style.content}> */}
       <View style={{ flex: 1, backgroundColor: colors.white }}>
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity style={style.button} onPress={handleExports}>
           <MaterialCommunityIcons name="note" size={26} color={colors.blue_oil} style={style.icon} />
           <Text style={style.text}>Definições</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity style={style.button} onPress={handleExports}>
           <Entypo name="export" size={26} color={colors.blue_oil} style={style.icon} />
           <Text style={style.text}>Exportar</Text>
         </TouchableOpacity>

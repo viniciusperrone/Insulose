@@ -7,9 +7,10 @@ import { style } from './style';
 interface ModalProps {
   enter?: boolean;
   register?: boolean;
+  noFunctionality?: boolean;
 }
 
-const Error: React.FC<ModalProps> = ({ enter, register }) => {
+const Error: React.FC<ModalProps> = ({ enter, register, noFunctionality }) => {
   const { error, setError } = useError();
 
   function handleError(){
@@ -29,6 +30,9 @@ const Error: React.FC<ModalProps> = ({ enter, register }) => {
             }
             {
               register ? 'Campos inválidos' : null
+            }
+            {
+              noFunctionality ? 'Sem funcionalidade' : null
             }
           </Text>
         </View>

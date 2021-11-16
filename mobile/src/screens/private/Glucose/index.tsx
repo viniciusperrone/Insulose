@@ -2,15 +2,21 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Touchable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
+import { useMenu, useError } from '../../../hooks/app';
+
 import Background from '../../../components/Background';
+import Menu from '../../../components/Menu';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
+import Error from '../../../components/Error';
 
 import { style } from './style';
 
 const Glucose: React.FC = () => {
 
   const [add, setAdd] = useState(false);
+  const { openMenu, setOpenMenu } = useMenu();
+  const { error } = useError();
 
   function getDate(date: String) {
     const day = date.slice(8, 10);
@@ -89,6 +95,13 @@ const Glucose: React.FC = () => {
             </TouchableOpacity>
 
           </View>
+      }
+
+      {
+        openMenu && <Menu />
+      }
+      {
+        error && <Error noFunctionality />
       }
       <Footer />
     </Background>

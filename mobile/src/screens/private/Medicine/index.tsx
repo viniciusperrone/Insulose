@@ -4,9 +4,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import SelectInput from 'react-native-select-input-ios';
 import { Feather } from '@expo/vector-icons';
 
+import { useMenu, useError } from '../../../hooks/app';
+
 import Background from '../../../components/Background';
 import Header from '../../../components/Header';
+import Menu from '../../../components/Menu';
 import Footer from '../../../components/Footer';
+import Error from '../../../components/Error';
 
 import { style } from './style';
 
@@ -19,6 +23,8 @@ type MedicineData = {
 
 const Medicine: React.FC = () => {
 
+  const { openMenu } = useMenu();
+  const { error } = useError();
   const [add, setAdd] = useState(false);
   const [medicine, setMedicine] = useState({} as MedicineData);
   const options = [{ value: 'mg', label: 'mg' },{ value: 'g', label: 'g' }]
@@ -43,6 +49,13 @@ const Medicine: React.FC = () => {
           <Feather name="plus" size={50} color="black" />
         </TouchableOpacity>
       </View>
+      {
+        openMenu && <Menu />
+      }
+
+      {
+        error && <Error noFunctionality />
+      }
       <Footer />
       { add && 
         <Modal transparent visible={add}>

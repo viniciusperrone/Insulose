@@ -2,15 +2,21 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Feather, AntDesign } from '@expo/vector-icons';
 
+import { useMenu, useError } from '../../../hooks/app';
+
 import Background from '../../../components/Background';
 import Header from '../../../components/Header';
+import Menu from '../../../components/Menu';
+import Error from '../../../components/Error';
 import Footer from '../../../components/Footer';
 
 import { style } from './style';
 
 const Schedule: React.FC = () => {
 
-  // const [] = 
+  const { openMenu } = useMenu();
+  const { error } = useError();
+
   function handleMonth(month: number) {
     let mes = ''
     switch (month) {
@@ -77,6 +83,12 @@ const Schedule: React.FC = () => {
         </View>
 
       </View>
+      {
+        openMenu && <Menu />
+      }
+      {
+        error && <Error noFunctionality />
+      }
       <Footer />
     </Background>
   );
