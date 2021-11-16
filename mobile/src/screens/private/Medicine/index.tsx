@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import SelectInput from 'react-native-select-input-ios';
 import { Feather } from '@expo/vector-icons';
 
 import Background from '../../../components/Background';
@@ -13,13 +14,16 @@ type MedicineData = {
   name: string;
   unit: string;
   dosage: string;
-  quantity: number;
+  quantity: string;
 } 
 
 const Medicine: React.FC = () => {
 
   const [add, setAdd] = useState(false);
   const [medicine, setMedicine] = useState({} as MedicineData);
+  const options = [{ value: 'mg', label: 'mg' },{ value: 'g', label: 'g' }]
+
+  // console.log(medicine);
 
   async function addMedicine(){
     return;
@@ -69,16 +73,16 @@ const Medicine: React.FC = () => {
               </View>
               <View style={style.containerInput}>
                 <Text style={style.titleModal}>Unidade</Text>
-                <TextInput 
-                  style={style.input}
-                  placeholder={'Unidade'}
+                <SelectInput 
+                  style={[style.input, { fontSize: 10 }]} 
                   value={medicine.unit}
-                  onChangeText={e => setMedicine({
+                  onChangeText={(e: string) => setMedicine({
                     name: medicine.name,
                     unit: e,
                     dosage: medicine.dosage,
                     quantity: medicine.quantity
                   })}
+                  options={options} 
                 />
               </View>
               <View style={style.containerInput}>
@@ -101,12 +105,12 @@ const Medicine: React.FC = () => {
                   style={[style.input, { width: 150 }]}
                   placeholder={'O valor'}
                   keyboardType={'decimal-pad'}
-                  value={String(medicine.quantity)}
+                  value={medicine.quantity}
                   onChangeText={e => setMedicine({
                     name: medicine.name,
                     unit: medicine.unit,
                     dosage: medicine.dosage,
-                    quantity: Number(e)
+                    quantity: e
                   })}
                 />
               </View>

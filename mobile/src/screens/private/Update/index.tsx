@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import Dialog from 'react-native-dialog';
 import RadioButtonGroup, { RadioButtonItem } from "expo-radio-button";
 
-// import { } from 'react-native-datepicker';
+import DatePicker from 'react-native-datepicker';
 
 import { useAuth } from '../../../hooks/auth';
 
@@ -21,17 +21,32 @@ type ProfileUpdate = {
   last_name: string;
   date_birth: Date;
   sex_gender: string;
-  weight: string,
-  height: string,
+  weight: string;
+  height: string;
+}
+
+type DateConfig = {
+  dobText: string;
+  dobDate: Date;
+  journeyText: string;
+  journeyDate: Date;
 }
 
 const UpdateProfile: React.FC = () => {
 
   const { user, setUser } = useAuth();
-  const [profile, setProfile] = useState({} as ProfileUpdate);
+  const [profile, setProfile] = useState<ProfileUpdate>({
+    first_name: user.first_name,
+    last_name: user.last_name,
+    date_birth: user.date_birth,
+    sex_gender: user.sex_gender,
+    weight: String(user.weight),
+    height: String(user.height)
+  });
   const [visible, setVisible] = useState(false);
   const [date, setDate] = useState<string>();
   const [modal, setModal] = useState<number>();
+  const [dateConfig, setDateConfig] = useState({} as DateConfig);
 
   function handleModalFirstName() {
     setVisible(true);
@@ -49,8 +64,16 @@ const UpdateProfile: React.FC = () => {
   }
 
   function handleModalDateBirth() {
+    // setDateConfig({
+    //   dobText: ,
+    //   dobDate: Date;
+    //   journeyText: dateConfig.dobText,
+    //   journeyDate: dateConfig.dobText
+    // });
     setVisible(true);
     setModal(4);
+    console.log('Testando')
+
   }
 
   function handleModalWeight() {
@@ -63,9 +86,10 @@ const UpdateProfile: React.FC = () => {
     setModal(6);
   }
 
-  async function handleUpdateProfile(){
+  async function handleUpdateProfile() {
     setVisible(false);
     const response = await api.put('/update', {
+      id_user: user.id,
       first_name: profile.first_name,
       last_name: profile.last_name,
       sex_gender: profile.sex_gender,
@@ -73,7 +97,7 @@ const UpdateProfile: React.FC = () => {
       weight: Number(profile.weight),
       height: Number(profile.height)
     });
-    if(!response){
+    if (!response) {
       console.log('Error');
       return;
     }
@@ -157,8 +181,8 @@ const UpdateProfile: React.FC = () => {
             Último Nome
           </Dialog.Title>
           <Dialog.Input
-            placeholder={user.first_name}
-            value={profile.first_name}
+            placeholder={user.last_name}
+            value={profile.last_name}
             onChangeText={e => setProfile({
               first_name: profile.first_name,
               last_name: e,
@@ -174,21 +198,41 @@ const UpdateProfile: React.FC = () => {
       }
       {
         modal === 3 &&
-        <RadioButtonGroup
+        <Dialog.Container visible={visible}>
+          <Dialog.Title>Sexo</Dialog.Title>
+          <RadioButtonGroup
 
-       >
-        <RadioButtonItem value="test2" label="Example with string" />
-        <RadioButtonItem
-          value="test"
-          label={
-            <Text style={{ color: "red" }}>Example passing React Element</Text>
-          }
-        />
-      </RadioButtonGroup>
+          >
+            <RadioButtonItem value="Feminino" label="Feminino" />
+            <RadioButtonItem value="Masculino" label="Masculino" />
+            <RadioButtonItem value="Outro" label="Outro" />
+
+          </RadioButtonGroup>
+          <Dialog.Button label="cancelar" onPress={() => setVisible(false)} />
+          <Dialog.Button label="ok" onPress={handleUpdateProfile} />
+        </Dialog.Container>
       }
       {
-        modal === 4 && <Text>OK</Text>
-        
+        modal === 4 &&
+        <Dialog.Container visible={visible}>
+          <Dialog.Title>Data de nascimento</Dialog.Title>
+          <DatePicker
+            format={'DD/MM/YYYY'}
+            style={{ width: 350 }}
+            date={profile.date_birth}
+            onDateChange={(e: Date) => setProfile({
+              first_name: profile.first_name,
+              last_name: profile.last_name,
+              date_birth: e,
+              sex_gender: profile.sex_gender,
+              weight: profile.weight,
+              height: profile.height
+            })}
+          />
+          <Dialog.Button label="cancelar" onPress={() => setVisible(false)} />
+          <Dialog.Button label="ok" onPress={handleUpdateProfile} />
+        </Dialog.Container>
+
       }
       {
         modal === 5 &&
@@ -197,8 +241,8 @@ const UpdateProfile: React.FC = () => {
             Peso
           </Dialog.Title>
           <Dialog.Input
-            placeholder={user.first_name}
-            value={profile.first_name}
+            placeholder={user.weight}
+            value={profile.weight}
             onChangeText={e => setProfile({
               first_name: profile.first_name,
               last_name: profile.last_name,

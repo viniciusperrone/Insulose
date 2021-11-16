@@ -4210,7 +4210,7 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "^1.2.5"
 
-moment@^2.22.0:
+moment@^2.22.0, moment@^2.29.1:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
@@ -4801,6 +4801,11 @@ react-native-screens@~3.8.0:
   integrity sha512-lHrnB/elAoMJKv8O12U6BLgeup4lB6ZKJHEOVuG/D72nv/OE9wUusbou6YCB5tp3YbaSpHflPnkFmHA/vCejpw==
   dependencies:
     warn-once "^0.1.0"
+
+react-native-select-input-ios@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-select-input-ios/-/react-native-select-input-ios-2.0.5.tgz#95a6b65569513cd5ad6f7b94016b6bd2477c6d18"
+  integrity sha512-3667Zvgjt5tDFu5PvbdnHs6m72k9WTN2PM2nj91xsMGzMCi7Bz2FYU6WjK3JNRT358fFhblKICxBLVJE/1h7yA==
 
 react-native-web@0.17.1:
   version "0.17.1"

@@ -31,6 +31,18 @@ export const style = StyleSheet.create({
     fontFamily: fonts.poppins_400,
     color: colors.dark_gray,
     marginLeft: 15
+  },
+  line: {
+    width: '96%',
+    height: 1,
+    backgroundColor: colors.black,
+    alignSelf: 'center'
+  },
+  titleSnack: {
+    fontSize: 18,
+    fontFamily: fonts.poppins_700,
+    color: colors.black,
+    alignSelf: 'center'
   }
   
 });
