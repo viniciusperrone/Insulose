@@ -37,8 +37,8 @@ interface UserData {
   last_name: string;
   birth_date: any;
   sex_gender: string;
-  weight: number;
-  height: number;
+  weight: string;
+  height: string;
   email: string;
   password: string;
 }
@@ -88,7 +88,7 @@ const SignUp: React.FC = () => {
   }
 
   function HandleSignUpOfPartSecond() {
-    if (!user.weight || user.weight === 0 || !user.height || user.height === 0) {
+    if (!user.weight || user.weight === '0' || !user.height || user.height === '0') {
       setError(true)
       return;
     }
@@ -111,8 +111,8 @@ const SignUp: React.FC = () => {
       last_name: user.last_name,
       birth_date: user.birth_date,
       sex_gender: user.sex_gender,
-      weight: user.weight,
-      height: user.height,
+      weight: Number(user.weight),
+      height: Number(user.height),
       email: user.email,
       password: user.password
     });
@@ -269,41 +269,41 @@ const SignUp: React.FC = () => {
                 <View style={{ width: 120, alignSelf: 'center' }}>
                   <Text style={style.subtitle}>Peso</Text>
                 </View>
-                <TextInputMask
-                  style={[style.input, { width: 120 }]}
-                  value={String(user.weight)}
+                <Input
+                  width={120}
+                  value={user.weight}
+                  keyboardType="numeric"
                   onChangeText={(e) => setUser({
                     first_name: user.first_name,
                     last_name: user.last_name,
                     birth_date: user.birth_date,
                     sex_gender: user.sex_gender,
-                    weight: Number(e),
+                    weight: e,
                     height: user.height,
                     email: user.email,
                     password: user.password
                   })}
                   placeholder="kg"
-                  type="only-numbers"
                 />
 
                 <View style={{ width: 120, alignSelf: 'center' }}>
                   <Text style={style.subtitle}>Altura</Text>
                 </View>
-                <TextInputMask
-                  style={[style.input, { width: 120 }]}
-                  value={String(user.height)}
+                <Input
+                  width={120}
+                  value={user.height}
+                  keyboardType="numeric"
                   onChangeText={(e) => setUser({
                     first_name: user.first_name,
                     last_name: user.last_name,
                     birth_date: user.birth_date,
                     sex_gender: user.sex_gender,
                     weight: user.weight,
-                    height: Number(e),
+                    height: e,
                     email: user.email,
                     password: user.password
                   })}
                   placeholder="cm"
-                  type="only-numbers"
                 />
               </View>
               <View style={[style.footer, { height: '30%' }]}>
