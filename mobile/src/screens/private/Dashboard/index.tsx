@@ -13,10 +13,9 @@ import {
   AntDesign,
 } from '@expo/vector-icons';
 
+import { useNavigation } from '@react-navigation/native'
 import { useAuth } from '../../../hooks/auth';
 import { useMenu, useError } from '../../../hooks/app';
-
-import Breakfast from '../../../assets/breakfast.png';
 
 import Background from '../../../components/Background';
 import Header from '../../../components/Header';
@@ -26,9 +25,18 @@ import Error from '../../../components/Error';
 import { style } from './style';
 
 const Dashboard: React.FC = () => {
+  const navigation = useNavigation();
   const { openMenu } = useMenu();
   const { user } = useAuth();
   const { error } = useError();
+
+  function handleExercise(){
+    navigation.navigate('Exercise');
+  }
+
+  function handleSnacks(){
+    navigation.navigate('Snacks');
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -58,12 +66,12 @@ const Dashboard: React.FC = () => {
           </TouchableOpacity>
         </View>
         <View style={style.footer}>
-          <TouchableOpacity style={style.button}>
+          <TouchableOpacity style={style.button} onPress={handleExercise}>
             <Text style={[style.text, { marginLeft: 10 }]}>atividade física</Text>
             <FontAwesome5 name="dumbbell" size={24} color="white" style={{ marginRight: -70 }} />
             <View />
           </TouchableOpacity>
-          <TouchableOpacity style={style.button}>
+          <TouchableOpacity style={style.button} onPress={handleSnacks}>
             <Text style={[style.text, { marginLeft: 10 }]}>refeições</Text>
             <MaterialCommunityIcons name="silverware-fork-knife" size={24} color="white" style={{ marginRight: -120 }} />
             <View />
