@@ -28,7 +28,7 @@ const Menu: React.FC = () => {
   const navigation = useNavigation();
   const [width, setWidth] = useState<any>(new Animated.Value(0));
   const { user } = useAuth();
-  const { modal, setModal } = useMenu();
+  const { setOpenMenu } = useMenu();
   const { setError } = useError();
   Animated.timing(
     width,
@@ -64,24 +64,24 @@ const Menu: React.FC = () => {
   const age = handleAge(day, month, year);
 
   function handleExports(){
-    setModal(false);
+    setOpenMenu(false);
     setError(true);
     
   }
   function handleSettings(){
-    setModal(false);
+    setOpenMenu(false);
     navigation.navigate('Settings');
   }
   function handleGlucose(){
-    setModal(false);
+    setOpenMenu(false);
     navigation.navigate('Glucose');
   }
   function handleAlarm(){
-    setModal(false);
+    setOpenMenu(false);
     navigation.navigate('Alarm');
   }
   function handleMedicine(){
-    setModal(false);
+    setOpenMenu(false);
     navigation.navigate('Medicine');
   }
   function handleSchedule(){
