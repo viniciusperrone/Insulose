@@ -85,6 +85,7 @@ const Menu: React.FC = () => {
     navigation.navigate('Medicine');
   }
   function handleSchedule(){
+    setOpenMenu(false);
     navigation.navigate('Schedule');
   }
   const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);

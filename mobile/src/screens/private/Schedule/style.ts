@@ -19,7 +19,18 @@ export const style = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center'
   },
+  contentCalendar: {
+    minWidth: '100%',
+    height: 150,
+  },
   day: {
+    width: 68,
+    height: 120,
+    borderRadius: 43,
+    backgroundColor: '#680279',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    marginHorizontal: 15
 
   },
   footerCalendar: {
