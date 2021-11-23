@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { Feather, AntDesign } from '@expo/vector-icons';
 
+import { useNavigation } from '@react-navigation/native';
 import { useMenu, useError } from '../../../hooks/app';
 
 import Background from '../../../components/Background';
@@ -37,10 +38,22 @@ const DayComponent: React.FC<PropsDay> = ({ day_number, day_week }) => {
   );
 }
 
+const TimeComponent: React.FC = () => {
+  return(
+    <View>
+      
+    </View>
+  );
+};
 const Schedule: React.FC = () => {
 
+  const navigation = useNavigation();
   const { openMenu } = useMenu();
   const { error } = useError();
+
+  function addCalendar(){
+    navigation.navigate('RegisterSchedule');
+  }
 
   function handleMonth(month: number) {
     let mes = ''
@@ -162,10 +175,10 @@ const Schedule: React.FC = () => {
             </View>
           </ScrollView>
         <View style={style.footerCalendar}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={addCalendar}>
             <AntDesign name="pluscircle" size={20} color="white" />
           </TouchableOpacity>
-          <Text style={style.textIcon}>Adicionar à agenda {quantityDays}</Text>
+          <Text style={style.textIcon}>Adicionar à agenda</Text>
         </View>
 
       </View>

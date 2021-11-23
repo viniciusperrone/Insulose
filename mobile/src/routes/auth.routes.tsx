@@ -13,6 +13,7 @@ import UpdateProfile from '../screens/private/Update';
 import Units from '../screens/private/Units';
 import Limits from '../screens/private/Limits';
 import Schedule from '../screens/private/Schedule';
+import RegisterSchedule from '../screens/private/RegisterSchedule';
 import Medicine from '../screens/private/Medicine';
 import Alarm from '../screens/private/Alarm';
 import Glucose from '../screens/private/Glucose';
@@ -73,6 +74,11 @@ const AuthRoutes: React.FC = () => {
             <Screen
                 name="Schedule"
                 component={Schedule}
+            />
+
+            <Screen
+                name="RegisterSchedule"
+                component={RegisterSchedule}
             />
 
             <Screen
