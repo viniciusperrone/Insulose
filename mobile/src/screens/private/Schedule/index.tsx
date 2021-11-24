@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, TouchableOpacityProps } from 'react-native';
 import { Feather, AntDesign } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
@@ -15,43 +15,40 @@ import { style } from './style';
 import { fonts } from '../../../style/fonts';
 
 type PropsDay = {
+  year: number;
+  month: number;
   day_number: number;
   day_week: string;
 }
-const DayComponent: React.FC<PropsDay> = ({ day_number, day_week }) => {
-  const date = new Date();
+const DayComponent: React.FC<PropsDay> = ({ year, month, day_number, day_week }) => {
+  const date = new Date(year, month, day_number);
+  const dateToday = new Date();
+
   return (
-    <TouchableOpacity style={style.day}>
+    <TouchableOpacity style={[style.day, { backgroundColor: date.getDate() === dateToday.getDate() ? '#FFFFFF' : '#680279' }]} >
       <Text style={{
         fontFamily: fonts.roboto_400,
         fontSize: 24,
-        color: 'white'
+        color: date.getDate() === dateToday.getDate() ? '#680279' : '#FFFFFF'
       }}>
-        {day_number}
+        {day_number < 10 ? '0' + day_number : day_number}
       </Text>
       <Text style={{
         fontFamily: fonts.roboto_400,
         fontSize: 16,
-        color: 'white'
+        color: date.getDate() === dateToday.getDate() ? '#680279' : '#FFFFFF'
       }}>{day_week}</Text>
     </TouchableOpacity>
   );
 }
 
-const TimeComponent: React.FC = () => {
-  return(
-    <View>
-      
-    </View>
-  );
-};
 const Schedule: React.FC = () => {
 
   const navigation = useNavigation();
   const { openMenu } = useMenu();
   const { error } = useError();
 
-  function addCalendar(){
+  function addCalendar() {
     navigation.navigate('RegisterSchedule');
   }
 
@@ -104,7 +101,7 @@ const Schedule: React.FC = () => {
   const [year, setYear] = useState(date.getFullYear());
   const [quantityDays, setQuantityDays] = useState(getQuantityDays(year, indexMonth));
 
-  function getQuantityDays(year: number, month: number){
+  function getQuantityDays(year: number, month: number) {
     const quantity = new Date(year, month + 1, 0);
     return quantity.getDate();
   }
@@ -114,7 +111,7 @@ const Schedule: React.FC = () => {
       setMonth(handleMonth(indexMonth));
       setYear(year - 1)
       setQuantityDays(getQuantityDays(year, indexMonth));
-    }else {
+    } else {
       setIndexMonth(indexMonth - 1);
       setMonth(handleMonth(indexMonth));
       setQuantityDays(getQuantityDays(year, indexMonth));
@@ -135,12 +132,19 @@ const Schedule: React.FC = () => {
 
   const getComponentDay = () => {
     var genetateComponent = [];
+    const week = ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"];
 
-    for(let i=0; i<quantityDays; i++){
-      console.log('Contador: ' + i );
+    for (let i = 1; i <= quantityDays; i++) {
+      const date = new Date(year, indexMonth, i);
+      console.log('Contador: ' + i);
       genetateComponent.push(
         <View key={i}>
-          <DayComponent day_number={i} day_week={'Ter'}/>
+          <DayComponent
+            year={year}
+            month={indexMonth}
+            day_number={i}
+            day_week={week[date.getDay()].slice(0, 3)}
+          />
         </View>
       );
     }
@@ -161,27 +165,48 @@ const Schedule: React.FC = () => {
             <Feather name="arrow-right" size={30} style={style.icon} />
           </TouchableOpacity>
         </View>
-          <ScrollView 
-            style={{ flex: 1 }} 
-            horizontal
-          >
-            <View style={{
-              height: '100%',
-              width: '100%',
-              flexDirection: 'row',
-              justifyContent: 'space-evenly',
-            }}>
-              <DayComponent day_number={57} day_week={'Ter'}/>
-            </View>
-          </ScrollView>
+        <ScrollView
+          style={{ flex: 1 }}
+          horizontal
+        >
+          <View style={{
+            height: '100%',
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+          }}>
+            {getComponentDay()}
+            {/* <DayComponent day_number={57} day_week={'Ter'}/> */}
+          </View>
+        </ScrollView>
         <View style={style.footerCalendar}>
           <TouchableOpacity onPress={addCalendar}>
             <AntDesign name="pluscircle" size={20} color="white" />
           </TouchableOpacity>
           <Text style={style.textIcon}>Adicionar à agenda</Text>
         </View>
-
       </View>
+        <ScrollView
+          style={{ flex: 1, marginBottom: 60 }}
+        >
+          <View style={{
+            height: '100%',
+            width: '100%',
+            alignItems: 'center',
+            marginBottom: 10
+          }}>
+
+            <View style={style.containerTime}>
+              <Text style={[style.text, { fontSize: 18 }]}>06</Text>
+              <Text style={style.text}>
+                Consulta - Teste {'\n'}
+                Dr. Vinicius
+              </Text>
+              <Text style={style.text}>12:45</Text>
+            </View>
+
+          </View>
+        </ScrollView>
       {
         openMenu && <Menu />
       }

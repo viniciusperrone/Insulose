@@ -7,6 +7,16 @@ export const style = StyleSheet.create({
   container: {
     flex: 1
   },
+  containerTime: {
+    width: 329,
+    height: 64,
+    borderRadius: 10,
+    backgroundColor: colors.white,
+    marginVertical: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  }, 
   calendar: {
     width: '100%',
     height: 250,
@@ -27,7 +37,6 @@ export const style = StyleSheet.create({
     width: 68,
     height: 120,
     borderRadius: 43,
-    backgroundColor: '#680279',
     justifyContent: 'space-evenly',
     alignItems: 'center',
     marginHorizontal: 15
@@ -49,7 +58,12 @@ export const style = StyleSheet.create({
     color: colors.white,
     marginLeft: 10
   },
-  text: {},
+  text: {
+    fontSize: 15,
+    fontFamily: fonts.roboto_400,
+    color: '#680279',
+    alignSelf: 'center'
+  },
   title: {
     fontSize: 25,
     fontFamily: fonts.poppins_700,
