@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text, ScrollView } from 'react-native';
 import Dialog from 'react-native-dialog';
 
 import { useMenu, useError } from '../../../hooks/app';
@@ -52,26 +52,32 @@ const Limits: React.FC = () => {
     <View style={style.container}>
       <HeaderApp title="Limites de glicemia" />
       <View style={style.content}>
+        
         <TouchableOpacity style={style.button} onPress={FirstModal}>
           <Text style={style.title}>Hiperglicemia</Text>
           <Text style={style.subtitle}>200 mg/dL</Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={style.button} onPress={SecondModal}>
           <Text style={style.title}>Glicemia alta</Text>
           <Text style={style.subtitle}>145 mg/dL</Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={style.button} onPress={ThreeModal}>
           <Text style={style.title}>Glicemia desejada</Text>
           <Text style={style.subtitle}>100 mg/dL</Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={style.button} onPress={FourModal}>
           <Text style={style.title}>Glicemia baixa</Text>
           <Text style={style.subtitle}>80 mg/dL</Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={style.button} onPress={FiveModal}>
           <Text style={style.title}>Hipoglicemia</Text>
           <Text style={style.subtitle}>50 mg/dL</Text>
         </TouchableOpacity>
+
       </View>
       {
         modal === 1 &&
@@ -169,19 +175,24 @@ const Limits: React.FC = () => {
         </Dialog.Container>
       }
       <View style={style.line} />
-      <Text>Faixa após a refeição</Text>
-      <TouchableOpacity style={style.button}>
-        <Text style={style.title}>Hiperglicemia</Text>
-        <Text style={style.subtitle}>200 mg/dL</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={style.button}>
-        <Text style={style.title}>Glicemia alta</Text>
-        <Text style={style.subtitle}>145 mg/dL</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={style.button}>
-        <Text style={style.title}>Glicemia desejada</Text>
-        <Text style={style.subtitle}>100 mg/dL</Text>
-      </TouchableOpacity>
+
+      <ScrollView style={{ flex: 1, marginBottom: 60 }}>
+        <View style={style.contentSnack}>
+          <Text style={style.titleSnack}>Faixa após a refeição</Text>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.title}>Hiperglicemia</Text>
+            <Text style={style.subtitle}>200 mg/dL</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.title}>Glicemia alta</Text>
+            <Text style={style.subtitle}>145 mg/dL</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={style.button}>
+            <Text style={style.title}>Glicemia desejada</Text>
+            <Text style={style.subtitle}>100 mg/dL</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
       {
         openMenu && <Menu />
       }

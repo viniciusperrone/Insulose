@@ -9,9 +9,15 @@ export const style = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   content: {
-    flex: 1,
-    backgroundColor: colors.gray_light
+    height: 450,
+    width: '100%',
+    backgroundColor: colors.gray_light,
   },
+  contentSnack: { 
+    height: '100%',
+    width: '100%',
+    backgroundColor: colors.gray_light
+  }, 
   button: {
     width: '100%', 
     height: 70,
@@ -32,17 +38,17 @@ export const style = StyleSheet.create({
     color: colors.dark_gray,
     marginLeft: 15
   },
+  titleSnack: {
+    fontSize: 18,
+    fontFamily: fonts.poppins_700,
+    color: colors.black,
+    marginTop: 12,
+    alignSelf: 'center'
+  },
   line: {
     width: '96%',
     height: 1,
     backgroundColor: colors.black,
     alignSelf: 'center'
   },
-  titleSnack: {
-    fontSize: 18,
-    fontFamily: fonts.poppins_700,
-    color: colors.black,
-    alignSelf: 'center'
-  }
-  
 });
