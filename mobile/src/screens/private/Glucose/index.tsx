@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Touchable } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { Feather, MaterialIcons, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
 import { useMenu, useError } from '../../../hooks/app';
 
@@ -69,15 +69,33 @@ const Glucose: React.FC = () => {
             <Text style={style.textFunny}>Meu humor</Text>
             <View style={style.containerComment}>
               <Text style={style.textComment}>Adicionar comentário:</Text>
-              <TextInput 
+              <TextInput
                 style={style.inputComment}
+                placeholder={'Exemplo: eu estou muito instavél'}
               />
             </View>
+            <View style={style.containerEmojis}>
+              <TouchableOpacity>
+                <MaterialIcons name="emoji-emotions" style={style.emojis} size={32} color="#1B8800" />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <MaterialCommunityIcons name="emoticon-happy" style={style.emojis} size={32} color="#8F9B07" />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <MaterialCommunityIcons name="emoticon-neutral" style={style.emojis} size={32} color="#E0CB0E" />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Ionicons name="md-sad-sharp" style={style.emojis} size={32} color="#C64913" />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <MaterialCommunityIcons name="emoticon-sad" style={style.emojis} size={32} color="#BC0D0D" />
+              </TouchableOpacity>
+            </View>
             <View style={style.footer}>
-              <TouchableOpacity style={[style.button, { marginLeft: 25}]} onPress={() => setAdd(false)}>
+              <TouchableOpacity style={[style.button, { marginLeft: 25 }]} onPress={() => setAdd(false)}>
                 <Text style={style.textButton}>cancelar</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[style.button, { marginRight: 25}]}>
+              <TouchableOpacity style={[style.button, { marginRight: 25 }]}>
                 <Text style={style.textButton}>adicionar</Text>
               </TouchableOpacity>
             </View>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { } from 'react-native';
+import { View, Text } from 'react-native';
 
 import { useError, useMenu } from '../../../hooks/app';
 
@@ -9,12 +9,19 @@ import Menu from '../../../components/Menu';
 import Error from '../../../components/Error';
 import Footer from '../../../components/Footer';
 
+import { style } from './style';
+
 const Exercise: React.FC = () => {
     const { openMenu } = useMenu();
     const { error } = useError();
     return(
         <Background>
             <Header />
+            <View style={style.container}>
+                <Text style={style.title}>
+                    Exercícios físicos
+                </Text>
+            </View>
             {
                 openMenu && <Menu />
             }

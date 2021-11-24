@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Modal } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Modal } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { Feather } from '@expo/vector-icons';
+
+import { useMenu } from '../../../hooks/app';
 
 import Background from '../../../components/Background';
 import Header from '../../../components/Header';
+import Menu from '../../../components/Menu';
 import Footer from '../../../components/Footer';
 
 import { style } from './style';
 
 const Alarm: React.FC = () => {
+  const { openMenu } = useMenu();
   const [add, setAdd] = useState(false);
 
   return (
@@ -20,7 +25,7 @@ const Alarm: React.FC = () => {
           Você naõ possui alarme. Clique em (+) para{'\n'}
           adicionar seu primeiro alarme{'\n'}
         </Text>
-        <TouchableOpacity style={style.plusButton}>
+        <TouchableOpacity style={style.plusButton} onPress={() => setAdd(true)}>
           <Feather name="plus" size={50} color="black" />
         </TouchableOpacity>
       </View>
@@ -114,6 +119,9 @@ const Alarm: React.FC = () => {
           </View>
           </View>
         </Modal>
+      }
+      {
+        openMenu && <Menu />
       }
       <Footer />
     </Background>

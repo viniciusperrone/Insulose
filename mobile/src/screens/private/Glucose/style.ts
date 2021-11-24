@@ -74,6 +74,15 @@ export const style = StyleSheet.create({
       width: '100%',
       height: 70,
   },
+  containerEmojis: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center'
+
+  },
+  emojis: {
+    marginHorizontal: 8
+  },
   input: {
       width: 218,
       height: 80,
@@ -92,8 +101,9 @@ export const style = StyleSheet.create({
     borderRadius: 10,
     fontSize: 13,
     fontFamily: fonts.roboto_400,
-    color: colors.black,
-    alignSelf: 'center'
+    color: colors.dark_gray,
+    paddingLeft: 10,
+    alignSelf: 'center',
   },
   footer: {
       flexDirection: 'row',

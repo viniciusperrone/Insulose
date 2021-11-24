@@ -8,22 +8,28 @@ import {
 } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
+import { useMenu } from '../../hooks/app';
 
 import { style } from './style';
 
 const Footer: React.FC = () => {
   const navigation = useNavigation();
+  const { setOpenMenu} = useMenu();
 
   function handleGlucose(){
+    setOpenMenu(false);
     navigation.navigate('Glucose');
   }
   function handleMedicine(){
+    setOpenMenu(false);
     navigation.navigate('Medicine');
   }
   function handleSchedule(){
+    setOpenMenu(false);
     navigation.navigate('Schedule');
   }
   function handleAlarm(){
+    setOpenMenu(false);
     navigation.navigate('Alarm');
   }
   return (
