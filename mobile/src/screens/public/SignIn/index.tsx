@@ -73,6 +73,10 @@ const SignIn: React.FC = () => {
         console.log('Deu Error');
       }
       api.defaults.headers.authorization = `Bearer ${response.data.token}`;      
+      setUserLogin({
+        email: '',
+        password: ''
+      });
       return navigation.navigate('Dashboard');
     }
 

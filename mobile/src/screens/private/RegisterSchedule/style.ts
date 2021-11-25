@@ -21,7 +21,7 @@ export const style = StyleSheet.create({
   },
   calendar: {
       width: 326,
-      height: 260,
+      height: 315,
       borderRadius: 10,
       backgroundColor: colors.white,
       marginTop: 10,
