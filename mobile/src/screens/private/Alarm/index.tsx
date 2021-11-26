@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Platform } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Feather, FontAwesome, MaterialIcons, Ionicons } from '@expo/vector-icons';
 
@@ -92,6 +92,29 @@ const Alarm: React.FC = () => {
   const { openMenu } = useMenu();
   const [add, setAdd] = useState(false);
 
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+
+  const onChange = (event: any, selectedDate: any) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+  };
+
+  const showMode = (currentMode: any) => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+  const showTimepicker = () => {
+    showMode('time');
+  };
+
   return (
     <Background>
       <Header />
@@ -108,10 +131,23 @@ const Alarm: React.FC = () => {
           adicionar seu primeiro alarme{'\n'}
         </Text> */}
         </ScrollView>
-        <TouchableOpacity style={style.plusButton} onPress={() => setAdd(true)}>
+        <TouchableOpacity style={style.plusButton} onPress={() => setAdd(!add)}>
           <Feather name="plus" size={50} color="black" />
         </TouchableOpacity>
       </View>
+
+      {
+        add && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            value={date}
+            mode={mode}
+            is24Hour={true}
+            display="default"
+            onChange={onChange}
+          />
+        )
+      }
 
       {
         openMenu && <Menu />
