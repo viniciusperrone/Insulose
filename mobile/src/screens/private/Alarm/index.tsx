@@ -1,22 +1,44 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Platform, Modal } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Feather, FontAwesome, MaterialIcons, Ionicons } from '@expo/vector-icons';
 
-import { useMenu } from '../../../hooks/app';
+import { useMenu, useError } from '../../../hooks/app';
 
 import Background from '../../../components/Background';
 import Header from '../../../components/Header';
 import Menu from '../../../components/Menu';
+import Error from '../../../components/Error';
 import Footer from '../../../components/Footer';
 
 import { style } from './style';
 import { colors } from '../../../style/colors';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface AlarmProps {
   horary: string;
   day_week: String[];
 }
+
+interface HoraryProps {
+  time: string;
+}
+
+const TimeAlarm: React.FC<HoraryProps> = ({ time }) => {
+
+  const [selected, setSelected] = useState(false);
+  return (
+    <TouchableOpacity style={style.buttonAlarm} onPress={() => setSelected(!selected)}>
+      {
+        selected && <View style={{ width: 80, height: 2, backgroundColor: colors.black }}/>
+      }
+      <Text style={style.textHorary}>{time}</Text>
+      {
+        selected && <View style={{ width: 80, height: 2, backgroundColor: colors.black }}/>
+      }
+    </TouchableOpacity>
+  );
+};
 const CardAlarm: React.FC<AlarmProps> = ({ horary, day_week }) => {
   const [toggle, setToggle] = useState(true);
   const [extend, setExtend] = useState(false);
@@ -90,30 +112,33 @@ const CardAlarm: React.FC<AlarmProps> = ({ horary, day_week }) => {
 
 const Alarm: React.FC = () => {
   const { openMenu } = useMenu();
+  const { error } = useError();
   const [add, setAdd] = useState(false);
 
   const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
 
-  const onChange = (event: any, selectedDate: any) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios');
-    setDate(currentDate);
-  };
+  let hours = [];
+  let minutes = [];
 
-  const showMode = (currentMode: any) => {
-    setShow(true);
-    setMode(currentMode);
-  };
+  for (let i = 0; i < 24; i++) {
+    if (i < 10) {
+      hours.push('0' + i);
+    }
+    else {
+      hours.push(i);
+    }
+  }
 
-  const showDatepicker = () => {
-    showMode('date');
-  };
-
-  const showTimepicker = () => {
-    showMode('time');
-  };
+  for (let i = 0; i < 60; i++) {
+    if (i < 10) {
+      minutes.push('0' + i);
+    }
+    else {
+      minutes.push(i);
+    }
+  }
 
   return (
     <Background>
@@ -121,12 +146,8 @@ const Alarm: React.FC = () => {
       <View style={style.container}>
         <Text style={style.title}>Alarme</Text>
         <ScrollView style={{ flex: 1 }}>
-        <CardAlarm horary={'08:40'} day_week={['seg', 'ter', 'qua']} />
-        <CardAlarm horary={'08:40'} day_week={['seg', 'ter', 'qua']} />
-        <CardAlarm horary={'08:40'} day_week={['seg', 'ter', 'qua']} />
-        <CardAlarm horary={'08:40'} day_week={['seg', 'ter', 'qua']} />
-        <CardAlarm horary={'08:40'} day_week={['seg', 'ter', 'qua']} />
-        {/* <Text style={style.text}>
+          <CardAlarm horary={'08:40'} day_week={['seg', 'ter', 'qua']} />
+          {/* <Text style={style.text}>
           Você naõ possui alarme. Clique em (+) para{'\n'}
           adicionar seu primeiro alarme{'\n'}
         </Text> */}
@@ -138,19 +159,60 @@ const Alarm: React.FC = () => {
 
       {
         add && (
-          <DateTimePicker
-            testID="dateTimePicker"
-            value={date}
-            mode={mode}
-            is24Hour={true}
-            display="default"
-            onChange={onChange}
-          />
+          <Modal transparent visible={add}>
+            <View style={style.backgroundModal}>
+              <View style={style.containerModal}>
+                <LinearGradient
+                  colors={['#02005F', '#02007A']}
+                  style={style.headerModal}
+                >
+                  <Text style={style.textModal}>ALARME</Text>
+                </LinearGradient>
+                <View style={{ flex: 1 }}>
+                  <View style={{ flexDirection: 'row', height: '20%', justifyContent: 'space-evenly', alignItems: 'center' }}>
+                    <Text style={[style.textAlarm, { color: 'black' }]}>Hora</Text>
+                    <Text style={[style.textAlarm, { color: 'black' }]}>Minuto</Text>
+                  </View>
+                  <View style={{ flex: 1, flexDirection: 'row' }}>
+                    <ScrollView showsVerticalScrollIndicator={false}>
+                      {
+                        hours.map(hour => (
+                          <TimeAlarm time={String(hour)} />
+                        ))
+                      }
+                    </ScrollView>
+                    <Text style={[style.textHorary, { alignSelf: 'center' }]}>:</Text>
+                    <ScrollView showsVerticalScrollIndicator={false}>
+                      {
+                        minutes.map(minute => (
+                          <TimeAlarm time={String(minute)} />
+                        ))
+                      }
+                    </ScrollView>
+                  </View>
+                </View>
+                <LinearGradient
+                  colors={['#02005F', '#02007A']}
+                  style={style.footerModal}
+                >
+                  <TouchableOpacity onPress={() => setAdd(false)}>
+                    <Text style={style.textModal}>CANCELAR</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <Text style={style.textModal}>SALVAR</Text>
+                  </TouchableOpacity>
+                </LinearGradient>
+              </View>
+            </View>
+          </Modal>
         )
       }
 
       {
         openMenu && <Menu />
+      }
+      {
+        error && <Menu />
       }
       <Footer />
     </Background>

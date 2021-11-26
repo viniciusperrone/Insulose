@@ -4,11 +4,12 @@ import { Calendar, CalendarList, Agenda, LocaleConfig } from 'react-native-calen
 import { Ionicons } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
-import { useMenu } from '../../../hooks/app';
+import { useMenu, useError } from '../../../hooks/app';
 
 import Background from '../../../components/Background';
 import Header from '../../../components/Header';
 import Menu from '../../../components/Menu';
+import Error from '../../../components/Error';
 import Footer from '../../../components/Footer';
 
 import { style } from './style';
@@ -34,6 +35,7 @@ type DateProps = {
 const RegisterSchedule: React.FC = () => {
     const navigation = useNavigation();
     const { openMenu } = useMenu();
+    const { error } = useError();
     const [date, setDate] = useState<DateProps>();
     
     return (
@@ -121,6 +123,9 @@ const RegisterSchedule: React.FC = () => {
             <Footer />
             {
                 openMenu && <Menu />
+            }
+            {
+                error && <Error noFunctionality />
             }
         </Background>
     );

@@ -9,6 +9,52 @@ export const style = StyleSheet.create({
     marginBottom: 60,
     justifyContent: 'space-between'
   },
+  backgroundModal: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  containerModal: {
+    width: 310,
+    height: 350,
+    borderRadius: 30,
+    backgroundColor: 'white'
+  },
+  headerModal: {
+    width: '100%',
+    height: '12.5%',
+    borderTopLeftRadius: 28,
+    borderTopRightRadius: 28,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  footerModal: {
+    width: '100%',
+    height: '12.5%',
+    borderBottomLeftRadius: 28,
+    borderBottomRightRadius: 28,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center'
+  },
+  textModal: {
+    fontSize: 16,
+    fontFamily: fonts.poppins_500,
+    color: colors.white,
+  },
+  textHorary: {
+    fontSize: 22,
+    fontFamily: fonts.roboto_400,
+    color: colors.black
+  },
+  titleModal: {
+    fontSize: 14,
+    fontFamily: fonts.poppins_400,
+    color: colors.black,
+  },
   containerAlarm: {
     width: 315,
     borderRadius: 20,
@@ -74,4 +120,11 @@ export const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
 },
+  buttonAlarm: {
+    width: 100,
+    height: 55,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });

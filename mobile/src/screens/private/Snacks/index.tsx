@@ -104,7 +104,7 @@ const Snacks: React.FC = () => {
                 openMenu && <Menu />
             }
             {
-                error && <Error />
+                error && <Error noFunctionality />
             }
             <Footer />
         </Background>
