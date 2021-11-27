@@ -38,6 +38,22 @@ const Dashboard: React.FC = () => {
     navigation.navigate('Snacks');
   }
 
+  function handleNextAlarm(){
+    navigation.navigate('NextAlarm');
+  }
+
+  function handleNextGlucose(){
+    navigation.navigate('NextGlucose');
+  }
+
+  function handleNextMedicine(){
+    navigation.navigate('NextMedicine');
+  }
+
+  function handleNextSchedule(){
+    navigation.navigate('NextSchedule');
+  }
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Background>
@@ -45,22 +61,22 @@ const Dashboard: React.FC = () => {
         <Text style={style.title}>Olá, {user.first_name}</Text>
         <Text style={style.subtitle}>seja bem-vindo</Text>
         <View style={style.content}>
-          <TouchableOpacity style={style.card}>
+          <TouchableOpacity style={style.card} onPress={handleNextGlucose}>
             <Text style={style.titleCard}>glicemia</Text>
             <Fontisto name="blood-drop" size={60} style={style.iconCard} />
           </TouchableOpacity>
 
-          <TouchableOpacity style={style.card}>
+          <TouchableOpacity style={style.card} onPress={handleNextAlarm}>
             <Text style={style.titleCard}>alarme</Text>
             <Octicons name="bell" size={60} style={style.iconCard} />
           </TouchableOpacity>
 
-          <TouchableOpacity style={style.card}>
+          <TouchableOpacity style={style.card} onPress={handleNextMedicine}>
             <Text style={style.titleCard}>remédios</Text>
             <MaterialCommunityIcons name="pill" size={60} style={style.iconCard} />
           </TouchableOpacity>
 
-          <TouchableOpacity style={style.card}>
+          <TouchableOpacity style={style.card} onPress={handleNextSchedule}>
             <Text style={style.titleCard}>consultas</Text>
             <AntDesign name="calendar" size={60} style={style.iconCard} />
           </TouchableOpacity>

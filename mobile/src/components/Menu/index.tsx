@@ -88,6 +88,22 @@ const Menu: React.FC = () => {
     setOpenMenu(false);
     navigation.navigate('Schedule');
   }
+  function handleContact(){
+    setOpenMenu(false);
+    navigation.navigate('Contact');
+  }
+  function handleValuesGlucose(){
+    setOpenMenu(false);
+    navigation.navigate('ValuesGlucose');
+  }
+  function handleLevels(){
+    setOpenMenu(false);
+    navigation.navigate('Levels');
+  }
+  function handleTips(){
+    setOpenMenu(false);
+    navigation.navigate('Tips');
+  }
   const AnimatedGradient = Animated.createAnimatedComponent(LinearGradient);
   return (
     <Animated.View style={[style.container, { opacity: 1, width: width }]}>
@@ -134,19 +150,19 @@ const Menu: React.FC = () => {
 
         <View style={style.line} />
 
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity style={style.button} onPress={handleLevels}>
           <MaterialIcons name="show-chart" size={26} color={colors.blue_oil} style={style.icon} />
           <Text style={style.text}>Níveis de A1C</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity style={style.button} onPress={handleContact}>
           <MaterialIcons name="group" size={26} color={colors.blue_oil} style={style.icon} />
           <Text style={style.text}>Contacte-nos</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity style={style.button} onPress={handleValuesGlucose}>
           <MaterialCommunityIcons name="beaker-plus" size={26} color={colors.blue_oil} style={style.icon} />
           <Text style={style.text}>Valores de glicose</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.button}>
+        <TouchableOpacity style={style.button} onPress={handleTips}>
           <FontAwesome5 name="hand-sparkles" size={26} color={colors.blue_oil} style={style.icon} />
           <Text style={style.text}>Dicas</Text>
         </TouchableOpacity>
