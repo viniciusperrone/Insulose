@@ -130,7 +130,9 @@ const SignUp: React.FC = () => {
     navigation.navigate('SignIn');
   }
 
-  console.log(user);
+  function handleTermsServices(){
+    navigation.navigate('TermsServices');
+  }
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground
@@ -382,7 +384,7 @@ const SignUp: React.FC = () => {
                     }
                   </TouchableOpacity>
                   <Text style={[style.description, { color: colors.white }]}>Eu concordo com os </Text>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={handleTermsServices}>
                     <Text style={[style.description, { color: colors.blue_oil }]}>Termos e condições</Text>
                   </TouchableOpacity>
                 </View>

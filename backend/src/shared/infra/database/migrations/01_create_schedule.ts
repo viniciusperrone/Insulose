@@ -3,16 +3,15 @@ import { Knex } from 'knex';
 export async function up(knex: Knex) {
   return await knex.schema.createTable('schedule', table => {
     table.increments('id').primary(),
+    table.integer('user_id').unsigned().nullable(),
     table.string('event').notNullable(),
     table.datetime('hours').notNullable(),
     table.string('specialty').notNullable(),
     table.string('professional').notNullable(),
     table.string('other_professional').notNullable(),
     table.string('other_specialty').notNullable(),
-    table.string('user_id')
-      .references('id')
-      .inTable('users')
-      .index()
+    table.foreign('user_id')
+      .references('users.id')
   });
 }
 

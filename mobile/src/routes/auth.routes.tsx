@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Main from '../screens/public/Main';
 import SignIn from '../screens/public/SignIn';
 import SignUp from '../screens/public/SignUp';
+import TermsServices from '../screens/public/TermsServices';
 
 // Telas privadas
 import Dashboard from '../screens/private/Dashboard';
@@ -52,6 +53,11 @@ const AuthRoutes: React.FC = () => {
             <Screen
                 name="SignUp"
                 component={SignUp}
+            />
+
+            <Screen
+                name="TermsServices"
+                component={TermsServices}
             />
 
             <Screen
