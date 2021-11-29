@@ -6,12 +6,10 @@ export async function up(knex: Knex) {
       table.string('alarm_name').notNullable(),
       table.time('hours').notNullable(),
       table.date('date').notNullable(),
-      table.string('id_user_alarm')
-        .notNullable()
-        .references('id')
-        .inTable('users')
-        .onDelete('CASCADE')
-        .onUpdate('CASCADE')
+      table.string('user_id')
+      .references('id')
+      .inTable('users')
+      .index()
   });
 }
 

@@ -9,10 +9,10 @@ export async function up(knex: Knex) {
     table.string('professional').notNullable(),
     table.string('other_professional').notNullable(),
     table.string('other_specialty').notNullable(),
-    table.string('id_user_schedule')
-      .notNullable()
+    table.string('user_id')
       .references('id')
       .inTable('users')
+      .index()
   });
 }
 
