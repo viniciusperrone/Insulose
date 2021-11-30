@@ -1,10 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import Dialog from 'react-native-dialog';
 import RadioButtonGroup, { RadioButtonItem } from "expo-radio-button";
 
 import DatePicker from 'react-native-datepicker';
 
+import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../../../hooks/auth';
 
 import HeaderApp from '../../../components/HeaderApp';
@@ -25,15 +26,9 @@ type ProfileUpdate = {
   height: string;
 }
 
-type DateConfig = {
-  dobText: string;
-  dobDate: Date;
-  journeyText: string;
-  journeyDate: Date;
-}
-
 const UpdateProfile: React.FC = () => {
 
+  const navigation = useNavigation();
   const { user, setUser } = useAuth();
   const [profile, setProfile] = useState<ProfileUpdate>({
     first_name: user.first_name,
@@ -44,9 +39,7 @@ const UpdateProfile: React.FC = () => {
     height: String(user.height)
   });
   const [visible, setVisible] = useState(false);
-  const [date, setDate] = useState<string>();
   const [modal, setModal] = useState<number>();
-  const [dateConfig, setDateConfig] = useState({} as DateConfig);
 
   function handleModalFirstName() {
     setVisible(true);
@@ -93,7 +86,7 @@ const UpdateProfile: React.FC = () => {
       first_name: profile.first_name,
       last_name: profile.last_name,
       sex_gender: profile.sex_gender,
-      date_birth: profile.date_birth,
+      birth_date: profile.date_birth,
       weight: Number(profile.weight),
       height: Number(profile.height)
     });
@@ -112,8 +105,24 @@ const UpdateProfile: React.FC = () => {
       email: user.email,
       password: user.password
     });
+    navigation.navigate('Update');
     return;
   }
+
+  console.log(profile);
+  // useEffect(() => {
+  //   setUser({
+  //     id: user.id,
+  //     first_name: user.first_name,
+  //     last_name: user.last_name,
+  //     birth_date: user.birth_date,
+  //     sex_gender: user.sex_gender,
+  //     weight: user.weight,
+  //     height: user.height,
+  //     email: user.email,
+  //     password: user.password
+  //   });
+  // }, [user]);
 
   return (
     <View style={style.container}>
@@ -201,7 +210,7 @@ const UpdateProfile: React.FC = () => {
         <Dialog.Container visible={visible}>
           <Dialog.Title>Sexo</Dialog.Title>
           <RadioButtonGroup
-
+            
           >
             <RadioButtonItem value="Feminino" label="Feminino" />
             <RadioButtonItem value="Masculino" label="Masculino" />
@@ -241,7 +250,7 @@ const UpdateProfile: React.FC = () => {
             Peso
           </Dialog.Title>
           <Dialog.Input
-            placeholder={user.weight}
+            placeholder={String(user.weight)}
             value={profile.weight}
             onChangeText={e => setProfile({
               first_name: profile.first_name,

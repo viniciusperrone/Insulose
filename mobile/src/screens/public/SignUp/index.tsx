@@ -133,6 +133,8 @@ const SignUp: React.FC = () => {
   function handleTermsServices(){
     navigation.navigate('TermsServices');
   }
+  
+  console.log(user);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground

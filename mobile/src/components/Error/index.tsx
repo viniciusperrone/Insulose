@@ -8,9 +8,10 @@ interface ModalProps {
   enter?: boolean;
   register?: boolean;
   noFunctionality?: boolean;
+  updateProfile?: boolean;
 }
 
-const Error: React.FC<ModalProps> = ({ enter, register, noFunctionality }) => {
+const Error: React.FC<ModalProps> = ({ enter, register, noFunctionality, updateProfile }) => {
   const { error, setError } = useError();
 
   function handleError(){
@@ -33,6 +34,9 @@ const Error: React.FC<ModalProps> = ({ enter, register, noFunctionality }) => {
             }
             {
               noFunctionality ? 'Sem funcionalidade' : null
+            }
+            {
+              updateProfile ? 'Os dados serão atualizados quando sair do app' : null 
             }
           </Text>
         </View>
