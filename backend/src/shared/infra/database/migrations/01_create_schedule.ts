@@ -5,7 +5,7 @@ export async function up(knex: Knex) {
     table.increments('id').primary(),
     table.integer('user_id').unsigned().nullable(),
     table.string('event').notNullable(),
-    table.datetime('hours').notNullable(),
+    table.string('hours').notNullable(),
     table.string('specialty').notNullable(),
     table.string('professional').notNullable(),
     table.string('other_professional').notNullable(),

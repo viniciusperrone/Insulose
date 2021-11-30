@@ -5,6 +5,7 @@ import sessionsRouters from '../../../../modules/users/infra/routes/sessions.rou
 import profileRouters from '../../../../modules/users/infra/routes/profile.routes';
 import glucosesRoutes from '../../../../modules/glucose/infra/routes/glucoses';
 import allGlucosesRoutes from '../../../../modules/glucose/infra/routes/allGlucoses.routes';
+import countRoutes from '../../../../modules/glucose/infra/routes/count.routes';
 import scheduleRoutes from '../../../../modules/schedule/infra/routes/schedule.routes';
 import allScheduleRoutes from '../../../../modules/schedule/infra/routes/allSchedule.routes';
 import medicineRouters from '../../../../modules/medicine/infra/routes/medicine.routes';
@@ -21,6 +22,7 @@ routes.use('/sessions', sessionsRouters);
 routes.use('/update', profileRouters);
 routes.use('/glucose', glucosesRoutes);
 routes.use('/all/glucoses', allGlucosesRoutes);
+routes.use('/count/glucoses', countRoutes);
 routes.use('/schedule', scheduleRoutes);
 routes.use('/all/schedules', allScheduleRoutes);
 routes.use('/medicine', medicineRouters);

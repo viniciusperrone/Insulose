@@ -5,7 +5,7 @@ export async function up(knex: Knex){
     table.increments('id').primary(),
     table.integer('user_id').unsigned().nullable
     table.string('name_medicine').notNullable(),
-    table.time('hours_medicine').notNullable(),
+    table.string('hours_medicine').notNullable(),
     table.float('quantity_medicine').notNullable(),
     table.integer('times_day').notNullable(),
     table.foreign('user_id')

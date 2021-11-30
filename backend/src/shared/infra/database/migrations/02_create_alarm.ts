@@ -5,8 +5,8 @@ export async function up(knex: Knex) {
     table.increments('id').primary(),
     table.integer('user_id').unsigned().nullable(),
     table.string('alarm_name').notNullable(),
-    table.time('hours').notNullable(),
-    table.date('date').notNullable(),
+    table.string('hours').notNullable(),
+    table.string('date').notNullable(),
     table.foreign('user_id')
       .references('users.id')
   });
