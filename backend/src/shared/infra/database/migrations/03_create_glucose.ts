@@ -7,6 +7,8 @@ export async function up(knex: Knex) {
     table.date('date_glucose').notNullable(),
     table.time('hours_glucose').notNullable(),
     table.float('level_glucose').notNullable(),
+    table.integer('feeling').notNullable(),
+    table.string('comment').notNullable(),
     table.foreign('user_id')
       .references('users.id')
   });

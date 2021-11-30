@@ -9,5 +9,3 @@ const usersController = new UserController();
 usersRouters.post('/', usersController.create);
 
 export default usersRouters;
-
-
