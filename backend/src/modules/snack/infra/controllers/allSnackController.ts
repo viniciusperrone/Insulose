@@ -6,7 +6,7 @@ class  AllSnacksController {
     async get(request: Request, response: Response) {
         const {
             user_id
-        } = request.query;
+        } = request.body;
 
         if(!user_id){
             return response.json('Error');

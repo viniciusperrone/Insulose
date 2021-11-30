@@ -10,6 +10,6 @@ const allSnacksController = new AllSnacksController();
 
 allSnacksRoutes.use(isAuthenticated);
 
-allSnacksRoutes.get('/:user_id', allSnacksController.get);
+allSnacksRoutes.post('/', allSnacksController.get);
 
 export default allSnacksRoutes;

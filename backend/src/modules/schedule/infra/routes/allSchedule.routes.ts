@@ -10,6 +10,6 @@ const allScheduleController = new AllScheduleController();
 
 allScheduleRoutes.use(isAuthenticated);
 
-allScheduleRoutes.get('/:user_id', allScheduleController.get);
+allScheduleRoutes.post('/', allScheduleController.get);
 
 export default allScheduleRoutes;

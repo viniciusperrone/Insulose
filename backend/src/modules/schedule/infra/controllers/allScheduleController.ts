@@ -6,7 +6,7 @@ class  AllScheduleController {
     async get(request: Request, response: Response) {
         const {
             user_id
-        } = request.query;
+        } = request.body;
 
         const schedules = await database('schedule').select("*").where("user_id", Number(user_id));
 
